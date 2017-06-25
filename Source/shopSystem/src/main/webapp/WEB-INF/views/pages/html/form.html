@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <script src="../../resource/public/jquery/jquery-1.8.0.min.js"></script>
+    <script  src="../../resource/public/framework/formValidate.js"></script>
+    <script src="../../resource/public/framework/calendar.js"></script>
+
+    <style>
+        input{
+            margin-bottom: 3rem;
+        }
+    </style>
+</head>
+<body >
+不为空验证
+<input type="text" onfocus="isEmpty(this,0)" onblur="isEmpty(this,1)" id="name"/>
+<span id="nameInfo"></span>
+
+密码
+<input type="password" id="password"  onfocus="password(this,0)" onblur="password(this,1)">
+<span id="passwordInfo"></span>
+
+邮箱
+<input type="email" id="email"  onfocus="isEmail(this,0,0)" onblur="isEmail(this,0,1)">
+<span id="emailInfo"></span>
+
+电话号码
+<input type="tel"  onfocus="isPhone(this,0)" onblur="isPhone(this,1)" id="tel">
+<span id="telInfo"></span>
+
+时间
+<input type="text" name="starttime" id="starttime" onfocus="MyCalendar.SetDate(this)" onblur="MyCalendar.check(this.value)" />
+<span id="starttimeInfo"></span>
+</body>
+</html>

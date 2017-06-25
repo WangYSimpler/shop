@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <link rel="stylesheet" href="../../resource/css/fDialog.css">
+    <script src="../../resource/public/jquery/jquery-1.8.0.min.js"></script>
+    <script src="../../resource/public/jquery/jquery.fDialog.min.js"></script>
+    <script src="../../resource/public/jquery/fDialog.plugin.js"></script>
+    <script>
+        function _dialog() {
+            $.fDialog({
+                id: 'dialog', //id
+                title: '水平垂直居中演示', //标题
+                content: 'dddddd',
+                w: 400, //宽
+                h: 200, //高
+                footer: true, //不显示按钮栏
+                x: 'center', //水平居中
+                y: 'center', //垂直居中
+                buttons: [{text: '确定'}, {text: '取消'}],
+                shade: true,
+                drag:true  ,  //允许拖拽
+                closable:true
+
+            })
+        }
+    </script>
+</head>
+<body>
+<input type="button" value="dialog" id="dialog" onclick="_dialog()">
+<a href="https://www.baidu.com">hhhh</a>
+</body>
+</html>

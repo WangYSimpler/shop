@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <title> 爱宝宝 订单系统 </title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="css/index.css">
+    <script type="text/javascript" src="../resource/public/jquery/jquery-1.8.0.min.js"></script>
+    <script type="text/javascript" src="../resource/public/framework/json-menu.js"></script>
+   <script type="text/javascript" src="../resource/public/config/config.js"></script>
+
+</head>
+<body>
+	<h1> 欢迎来到 ABB 爱宝宝用心店  ！！！</h1>
+	
+	
+	<script type="text/javascript">
+	  $(function () {
+		 
+	      setInterval(ChangeTime, 1000);
+	 
+	    });
+	 
+	    function ChangeTime() {
+	 
+	      var time = 1;
+	 
+	      time = parseInt(time);
+	 
+	      time--;
+	 
+	      if (time <= 0) {
+	    	var fullUrl = gofirstConfig.domain + '/' + gofirstConfig.project +'/pages';
+	        window.location.href = fullUrl + "/html/login.html";
+	 
+	      } else {
+	 
+	        $("#time").text(time);
+	 
+	      }
+	 
+	    }
+	</script>
+
+</body>
+</html>
