@@ -1,10 +1,9 @@
 package com.gofirst.framework.bean;
-// Generated 2017-6-22 23:29:00 by Hibernate Tools 4.0.0.Final
+// Generated 2017-6-27 1:51:35 by Hibernate Tools 4.0.0.Final
 
 import java.math.BigDecimal;
 import javax.persistence.Column;
 import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 import javax.persistence.Table;
 
@@ -15,17 +14,17 @@ import javax.persistence.Table;
 @Table(name = "T_ORDER", schema = "SHOP")
 public class TOrder implements java.io.Serializable {
 
-	/**
-	 * 
-	 */
-	private static final long serialVersionUID = 1L;
 	private String id;
 	private String orderNo;
 	private String orderName;
+	private String orderObject;
+	private Character orderStatus;
 	private BigDecimal orderPrice;
 	private BigDecimal orderNum;
 	private BigDecimal orderAmount;
+	private BigDecimal freeNum;
 	private String expressNo;
+	private BigDecimal expressFee;
 	private String buyDate;
 	private String buyAddress;
 	private String remark;
@@ -38,16 +37,20 @@ public class TOrder implements java.io.Serializable {
 		this.id = id;
 	}
 
-	public TOrder(String id, String orderNo, String orderName, BigDecimal orderPrice, BigDecimal orderNum,
-			BigDecimal orderAmount, String expressNo, String buyDate, String buyAddress, String remark,
-			Character flag) {
+	public TOrder(String id, String orderNo, String orderName, String orderObject, Character orderStatus,
+			BigDecimal orderPrice, BigDecimal orderNum, BigDecimal orderAmount, BigDecimal freeNum, String expressNo,
+			BigDecimal expressFee, String buyDate, String buyAddress, String remark, Character flag) {
 		this.id = id;
 		this.orderNo = orderNo;
 		this.orderName = orderName;
+		this.orderObject = orderObject;
+		this.orderStatus = orderStatus;
 		this.orderPrice = orderPrice;
 		this.orderNum = orderNum;
 		this.orderAmount = orderAmount;
+		this.freeNum = freeNum;
 		this.expressNo = expressNo;
+		this.expressFee = expressFee;
 		this.buyDate = buyDate;
 		this.buyAddress = buyAddress;
 		this.remark = remark;
@@ -55,7 +58,7 @@ public class TOrder implements java.io.Serializable {
 	}
 
 	@Id
-	@GeneratedValue
+
 	@Column(name = "ID", unique = true, nullable = false, length = 100)
 	public String getId() {
 		return this.id;
@@ -81,6 +84,24 @@ public class TOrder implements java.io.Serializable {
 
 	public void setOrderName(String orderName) {
 		this.orderName = orderName;
+	}
+
+	@Column(name = "ORDER_OBJECT", length = 20)
+	public String getOrderObject() {
+		return this.orderObject;
+	}
+
+	public void setOrderObject(String orderObject) {
+		this.orderObject = orderObject;
+	}
+
+	@Column(name = "ORDER_STATUS", length = 1)
+	public Character getOrderStatus() {
+		return this.orderStatus;
+	}
+
+	public void setOrderStatus(Character orderStatus) {
+		this.orderStatus = orderStatus;
 	}
 
 	@Column(name = "ORDER_PRICE", precision = 15, scale = 4)
@@ -110,6 +131,15 @@ public class TOrder implements java.io.Serializable {
 		this.orderAmount = orderAmount;
 	}
 
+	@Column(name = "FREE_NUM", precision = 22, scale = 0)
+	public BigDecimal getFreeNum() {
+		return this.freeNum;
+	}
+
+	public void setFreeNum(BigDecimal freeNum) {
+		this.freeNum = freeNum;
+	}
+
 	@Column(name = "EXPRESS_NO", length = 100)
 	public String getExpressNo() {
 		return this.expressNo;
@@ -117,6 +147,15 @@ public class TOrder implements java.io.Serializable {
 
 	public void setExpressNo(String expressNo) {
 		this.expressNo = expressNo;
+	}
+
+	@Column(name = "EXPRESS_FEE", precision = 20, scale = 4)
+	public BigDecimal getExpressFee() {
+		return this.expressFee;
+	}
+
+	public void setExpressFee(BigDecimal expressFee) {
+		this.expressFee = expressFee;
 	}
 
 	@Column(name = "BUY_DATE", length = 16)
