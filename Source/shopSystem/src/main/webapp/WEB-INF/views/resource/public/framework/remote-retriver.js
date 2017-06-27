@@ -2,8 +2,6 @@
  *  查询数据
  */
 var remoteRetriver = {
- 
-	
 		
 		/**
 		 * 排序规则：升序

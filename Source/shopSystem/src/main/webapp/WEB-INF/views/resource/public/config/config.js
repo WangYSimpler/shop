@@ -1,5 +1,5 @@
 var gofirstConfig = {
-    domain: 'http://localhost:8080',
+    domain: 'http://localhost:9911',
     project: 'shopSystem',
     timeout: 40000,
     errorHandlers: {

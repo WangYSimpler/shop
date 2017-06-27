@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  	<meta charset="UTF-8">
+    <title>ABB供应链系统登录</title>
+    <link rel="stylesheet" href="../css/login.css">
+    <script type="text/javascript" src="../../resource/public/jquery/jquery-1.8.0.min.js"></script>
+    <script type="text/javascript" src="../../resource/public/framework/formValidate.js"></script>
+    <script type="text/javascript" src="../../resource/public/framework/remote-permission.js"></script>
+    <script type="text/javascript" src="../../resource/public/framework/baseRequest.js"></script>
+    <script type="text/javascript" src="../../resource/public/config/config.js"></script>
+    <script type="text/javascript" src="../js/tOrder.js"></script>
+</head>
+
+
+<body>
+	<h1 align="center">订单展示</h1>
+	<div region="center" style="overflow:hidden;background:#fafafa; border:1px">
+        <table id="roleGrid" >
+            <thead>
+                <tr>
+                    <th field="ck" checkbox="true" align="center"></th>
+                    <th field="edit" width="60" align="center" formatter="formatbuttion">操作</th>
+                    <th field="role_id" width="180" sortable="true" align="center" sortable="true">角色编号</th>
+                    <th field="role_name" width="200" sortable="true" align="center" formatter="formatUrl">角色名称</th>
+                    <th field="sort_no" width="150" sortable="true" align="center" sortable="true">排序号</th>
+                    <th field="instit_id" sortable="true" hidden="true" align="center">机构编号</th>
+                    <th field="instit_sname" sortable="true" width="220" align="center">机构名称</th>
+                    <th field="remark" sortable="true" width="250" align="center">备注</th>
+                </tr>
+            </thead>
+        </table>
+    </div>
+</body>
+</html>

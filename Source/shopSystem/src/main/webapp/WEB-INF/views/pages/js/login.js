@@ -1,30 +1,35 @@
 
 /* ---登录--*/
-function login(userName,userPass) {
+function login() {
 	
-	console.log(userName);
+	var userNo = document.getElementById('userNo').value;  
+	var userPass = document.getElementById('userPass').value; 
+	console.log(userNo);
 	console.log(userPass);
 	
-	// remotePermission.login("1", "1", function(errCode, errMsg, resultData){}
-    var f1=true;
-    if(f1){
-        alert('login success!');
-        window.location.href = '../index.html'
-    }
+	remotePermission.login(userNo, userPass, function(errCode, errMsg, resultData){
+	    if(errCode == 0){
+	    	var fullUrl = gofirstConfig.domain + '/' + gofirstConfig.project +'/pages';
+	    	window.location.href=fullUrl+"/html/tOrder.html?backurl="+window.location.href;  
+	    }
+	    else{
+	        alert("登录失败！" + errMsg);
+	    }
+		
+	});
+   
+}
+
+function logout() {
+	remotePermission.logout(function(errCode, errMsg,resultData) {
+		  if(errCode == 0){
+			  alert("登出成功！" + errMsg);
+		    }
+		    else{
+		        alert("登录失败！" + errMsg);
+		    }
+	});
 }
 
 
-function isLogin(){
-    var islogin=localStorage.getItem('isLogin');
-    if(islogin == false){
-        window.location.href=gofirstConfig.domain + '/' + gofirstConfig.project + '/pages/html/login.html';
-    }
-}
 
-
-function setstorage(objname,obj){
-    localStorage.setItem(objname,JSON.stringify(obj));
-}
-function getstorage(objname){
-   JSON.parse(localStorage.getItem(objname)) ;
-}
