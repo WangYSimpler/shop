@@ -1,9 +1,8 @@
 package com.gofirst.framework.bean;
-// Generated 2017-6-22 23:29:00 by Hibernate Tools 4.0.0.Final
+// Generated 2017-6-27 1:51:35 by Hibernate Tools 4.0.0.Final
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 import javax.persistence.Table;
 
@@ -14,10 +13,6 @@ import javax.persistence.Table;
 @Table(name = "T_USER", schema = "SHOP")
 public class TUser implements java.io.Serializable {
 
-	/**
-	 * 
-	 */
-	private static final long serialVersionUID = 1L;
 	private String id;
 	private String userNo;
 	private String userName;
@@ -42,7 +37,7 @@ public class TUser implements java.io.Serializable {
 	}
 
 	@Id
-	@GeneratedValue
+
 	@Column(name = "ID", unique = true, nullable = false, length = 100)
 	public String getId() {
 		return this.id;
