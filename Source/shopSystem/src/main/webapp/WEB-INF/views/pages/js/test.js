@@ -48,18 +48,13 @@ function rQueryAll(){
     var sortParams = remoteRetriver.addSortFiled('createDatetime,createUser',remoteRetriver.SORT_TYPE_ASC);
     sortParams = remoteRetriver.addSortFiled('userName',remoteRetriver.SORT_TYPE_DESC)
     remoteRetriver.query('HyUsersRepository', 'findAll',[],sortParams, 0,10,false,function(errCode, errMsg, resultData,totalCount,pageCount){
-    	
-    	console.log(resultData);
-        if(errCode == 0){
-         alert("查询成功！数据：" + JSON.stringify(resultData));
-          
-          //  _resultJson={"totalCount":totalCount,"pageCount":pageCount,'data':resultData}
-            
-          
-       }
-        else{
-            alert("查询失败！" + errMsg);
-        }
+
+	console.log(resultData);
+	if (errCode == 0) {
+		alert("查询成功！数据：" + JSON.stringify(resultData));
+	} else {
+		alert("查询失败！" + errMsg);
+	}
     });
     return _resultJson;
    

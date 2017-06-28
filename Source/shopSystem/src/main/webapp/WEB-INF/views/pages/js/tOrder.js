@@ -1,32 +1,31 @@
-/**
- * @Author JiangR 2017/4/13.
- */
-/* ---登录--*/
-function login(userName,userPass) {
+//var testData = eval("([{\"No\":\"序号\",\"name\":\"姓名\",\"gender\":\"性别\",\"age\":\"年龄\"},{\"No\":\"1\",\"name\":\"小五毛\",\"gender\":\"男\",\"age\":\"22\"},{\"No\":\"2\",\"name\":\"中五毛\",\"gender\":\"女\",\"age\":\"18\"},{\"No\":\"3\",\"name\":\"大五毛\",\"gender\":\"男\",\"age\":\"20\"}])");
+
+function queryTOrderAll(){
 	
-	console.log(userName);
-	console.log(userPass);
+    var _resultJson;
+    
+    var params=[];
+    params.push('201706270001');
+    
+    remoteRetriver.resetSortFileds();
+    var sortParams = remoteRetriver.addSortFiled('createDatetime,createUser',remoteRetriver.SORT_TYPE_ASC);
+    sortParams = remoteRetriver.addSortFiled('userName',remoteRetriver.SORT_TYPE_DESC)
+    remoteRetriver.query('TOrderRepository', 'findByOrderNo','"201706270001"',sortParams, 0,10,false,function(errCode, errMsg, resultData,totalCount,pageCount){
+
+	console.log(resultData);
+	if (errCode == 0) {
+		alert("查询成功！数据：" + JSON.stringify(resultData));
+	} else {
+		alert("查询失败！" + errMsg);
+	}
+    });
+    return _resultJson;
+   
+}
+
+window.onload = function() {
 	
-	// remotePermission.login("1", "1", function(errCode, errMsg, resultData){}
-    var f1=true;
-    if(f1){
-        alert('login success!');
-        window.location.href = '../index.html'
-    }
+	var testData = queryTOrderAll();
+	createTable("data", testData, true, true, true);
 }
 
-
-function isLogin(){
-    var islogin=localStorage.getItem('isLogin');
-    if(islogin == false){
-        window.location.href=gofirstConfig.domain + '/' + gofirstConfig.project + '/pages/html/login.html';
-    }
-}
-
-
-function setstorage(objname,obj){
-    localStorage.setItem(objname,JSON.stringify(obj));
-}
-function getstorage(objname){
-   JSON.parse(localStorage.getItem(objname)) ;
-}

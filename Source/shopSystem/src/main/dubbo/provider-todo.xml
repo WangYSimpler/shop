@@ -13,14 +13,8 @@
 		http://code.alibabatech.com/schema/dubbo        
    		http://code.alibabatech.com/schema/dubbo/dubbo.xsd">
 
-	<dubbo:service interface="com.gofirst.framework.dao.test.ToDoRepository"
-		ref="todoRepository" validation="true" />
-		
-	<dubbo:service interface="com.gofirst.framework.dao.test.T_Client_Info_Repository"
-		ref="T_Client_Info_Repository" validation="true" />
-
-	<dubbo:service interface="com.gofirst.framework.service.TestService"
-		ref="myService" validation="true" />
-
+	<dubbo:service interface="com.gofirst.framework.dao.test.ToDoRepository" ref="todoRepository" validation="true" />
+	<dubbo:service interface="com.gofirst.framework.dao.test.T_Client_Info_Repository" ref="T_Client_Info_Repository" validation="true" />
+	<dubbo:service interface="com.gofirst.framework.service.TestService" ref="myService" validation="true" />
 
 </beans:beans>

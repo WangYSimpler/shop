@@ -69,6 +69,7 @@ var remoteRetriver = {
 		
 		//拼接成后台函数
 		var params = 'params=[' + funcParams + ']' ;
+		//var params = funcParams;
 		if(pageSorts!=null){
 			params += pageSorts;
 		}

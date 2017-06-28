@@ -14,6 +14,10 @@ import javax.persistence.Table;
 @Table(name = "T_ORDER", schema = "SHOP")
 public class TOrder implements java.io.Serializable {
 
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
 	private String id;
 	private String orderNo;
 	private String orderName;
