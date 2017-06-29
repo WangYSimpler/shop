@@ -27,5 +27,4 @@ public interface TOrderRepository extends CrudRepository<TOrder, Long>,Framework
 	
 	//有效订单: '0' 为有效
 	public List<TOrder>findByOrderNoContaining(String orderNo);
-	//public Page<TOrder>findByOrderNoContaining(String orderNo);
 }

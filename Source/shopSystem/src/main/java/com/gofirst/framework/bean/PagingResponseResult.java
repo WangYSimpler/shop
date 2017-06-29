@@ -1,4 +1,4 @@
-package com.gofirst.framework.response;
+package com.gofirst.framework.bean;
 
 public class PagingResponseResult extends ResponseResult{
 	

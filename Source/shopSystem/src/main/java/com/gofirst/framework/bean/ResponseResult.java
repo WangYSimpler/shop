@@ -1,4 +1,4 @@
-package com.gofirst.framework.response;
+package com.gofirst.framework.bean;
 
 import java.io.Serializable;
 
@@ -14,9 +14,9 @@ public class ResponseResult implements Serializable {
 	private static final long serialVersionUID = 1L;
 
 	/**
-	 * 当前的数据版本
+	 * 当前的数据版本 该位置存放系统中版本信息
 	 */
-	protected final String version = "1.0";
+	//protected final String version = "1.0-wang";
 
 	/**
 	 * 错误码，默认0为正确
@@ -57,8 +57,8 @@ public class ResponseResult implements Serializable {
 		this.errorMsg = errorMsg;
 	}
 
-	public String getVersion() {
-		return version;
-	}
+//	public String getVersion() {
+//		return version;
+//	}
 
 }

@@ -1,8 +1,6 @@
 package com.gofirst.framework.dao;
 
-import java.util.List;
 
-import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 import org.springframework.data.repository.CrudRepository;
 import org.springframework.stereotype.Repository;
@@ -19,10 +17,10 @@ import com.gofirst.framework.customRepository.FrameworkRepository;
 @Gateway
 public interface TUserRepository  extends CrudRepository<TUser, Long>,FrameworkRepository<TUser, Long>{
 
-	public TUser findByUserNoAndFlag(String userNo,char flag);
+	public TUser findByuserNo(String userNo);
 	//public User findByUserNo(String userNo);
 	
 	public Iterable<TUser> findAll(Pageable pageable);
-	public List<TUser> findByUserNoAndFlagContaining(String userNo,char flag);
-	public Page<TUser> findByUserNoAndFlagContaining(String userNo,char flag, Pageable pageable);
+	/*public List<TUser> findByUserIdContaining(String userId);
+	public Page<TUser> findByUserIdContaining(String userId, Pageable pageable);*/
 }
