@@ -10,7 +10,7 @@ function login() {
 	remotePermission.login(userNo, userPass, function(errCode, errMsg, resultData){
 	    if(errCode == 0){
 	    	var fullUrl = gofirstConfig.domain + '/' + gofirstConfig.project +'/pages';
-	    	window.location.href=fullUrl+"/html/tOrder.html?backurl="+window.location.href;  
+	    	window.location.href=fullUrl+'/html/tOrder.html';  
 	    }
 	    else{
 	        alert("登录失败！" + errMsg);

@@ -1,5 +1,7 @@
 package com.gofirst.framework.test;
 
+import java.util.List;
+
 import javax.inject.Inject;
 
 import org.junit.Assert;
@@ -8,6 +10,9 @@ import org.junit.runner.RunWith;
 import org.springframework.test.context.ContextConfiguration;
 import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 import org.springframework.test.context.web.WebAppConfiguration;
+
+import com.gofirst.framework.bean.TOrder;
+import com.gofirst.framework.dao.TOrderRepository;
 import com.gofirst.framework.service.TUserService;
 
 @RunWith(SpringJUnit4ClassRunner.class)
@@ -15,7 +20,7 @@ import com.gofirst.framework.service.TUserService;
 @WebAppConfiguration
 public class UserServiceTest {
 	
-	@Inject
+	/*@Inject
 	private TUserService usersService;
 	
 	@Test
@@ -24,6 +29,18 @@ public class UserServiceTest {
 		
 		
 		Assert.assertEquals(true, actual);
+	}*/
+	
+	@Inject
+	private TOrderRepository tOrderRepository;
+	
+	@Test
+	public void testAuthenticate() {
+		List<TOrder> lorder= tOrderRepository.findByOrderNoContaining("201706270001");
+		
+		System.out.println(lorder.size());
+		
 	}
+	
 
 }

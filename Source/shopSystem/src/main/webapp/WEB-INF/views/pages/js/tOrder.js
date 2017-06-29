@@ -5,12 +5,13 @@ function queryTOrderAll(){
     var _resultJson;
     
     var params=[];
-    params.push('201706270001');
+    params.push('2017062700001');
     
-    remoteRetriver.resetSortFileds();
+   /* remoteRetriver.resetSortFileds();
     var sortParams = remoteRetriver.addSortFiled('createDatetime,createUser',remoteRetriver.SORT_TYPE_ASC);
     sortParams = remoteRetriver.addSortFiled('userName',remoteRetriver.SORT_TYPE_DESC)
-    remoteRetriver.query('TOrderRepository', 'findByOrderNo','"201706270001"',sortParams, 0,10,false,function(errCode, errMsg, resultData,totalCount,pageCount){
+    */
+    remoteRetriver.query('TOrderRepository', 'findAll','',null, 0,10,false,function(errCode, errMsg, resultData,totalCount,pageCount){
 
 	console.log(resultData);
 	if (errCode == 0) {
