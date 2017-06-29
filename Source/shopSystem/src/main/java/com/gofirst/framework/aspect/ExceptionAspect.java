@@ -30,7 +30,7 @@ import org.springframework.core.annotation.Order;
 import com.alibaba.dubbo.rpc.RpcException;
 import com.alibaba.fastjson.JSON;
 import com.alibaba.fastjson.JSONException;
-import com.gofirst.framework.response.ResponseResult;
+import com.gofirst.framework.bean.ResponseResult;
 import com.gofirst.framework.exception.PermissionException;
 import com.gofirst.framework.exception.ServiceException;
 //import com.google.gson.Gson;

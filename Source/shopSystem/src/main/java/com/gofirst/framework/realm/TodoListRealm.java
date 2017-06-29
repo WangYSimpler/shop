@@ -19,12 +19,13 @@ import org.apache.shiro.subject.PrincipalCollection;
 
 import com.gofirst.framework.service.TUserService;
 
+
 @Named
 public class TodoListRealm extends AuthorizingRealm {
 	
 	
 	@Inject
-	private TUserService hyUsersService;
+	private TUserService tUserService;
 	/*
     @Inject
 	private TestService testService;
@@ -47,8 +48,8 @@ public class TodoListRealm extends AuthorizingRealm {
 		permissions.add("service:TestSettleService.*");
 		permissions.add("service:TInstrumentMarginService.*");*/
 		
-		permissions.add("dao:TOrderRepository.*");
-		permissions.add("dao:UserRepository.*");
+		permissions.add("dao:HyUsersRepository.*");
+		 permissions.add("dao:UserRepository.*");
 		
 		permissions.add("dao:*.*");	
 		permissions.add("service:*.*");
@@ -67,8 +68,8 @@ public class TodoListRealm extends AuthorizingRealm {
 	protected AuthenticationInfo doGetAuthenticationInfo(AuthenticationToken arg0) throws AuthenticationException {
 		
 		UsernamePasswordToken token = (UsernamePasswordToken) arg0;
-
-		if (hyUsersService.isAuthenticatedUser(token.getUsername(), String.valueOf(token.getPassword()))) {
+		boolean AuthUserResult =  tUserService.isAuthenticatedUser(token.getUsername(), String.valueOf(token.getPassword()));
+		if (AuthUserResult) {
 			return new SimpleAuthenticationInfo(token.getUsername(), token.getPassword(), "testRealm");
 		} else {
 			throw new AccountException("wrong password");

@@ -16,3 +16,36 @@ td {
 td button {
 	font-size: 12px;
 }
+
+* {
+	padding: 0;
+	margin: 0;
+}
+
+#tb {
+	width: 500px;
+	border: 1px solid #000;
+	border-collapse: collapse;
+}
+
+#tb td, #tb th {
+	border: 1px solid #000;
+}
+
+#tb thead tr {
+	height: 50px;
+	background-color: lightgray;
+}
+
+#tb tbody tr {
+	text-align: center;
+	height: 30px;
+}
+
+#tb a {
+	text-decoration: none;
+}
+
+#tb a:hover {
+	color: hotpink;
+}

@@ -2,6 +2,8 @@
  *  查询数据
  */
 var remoteRetriver = {
+ 
+	
 		
 		/**
 		 * 排序规则：升序
@@ -69,7 +71,6 @@ var remoteRetriver = {
 		
 		//拼接成后台函数
 		var params = 'params=[' + funcParams + ']' ;
-		//var params = funcParams;
 		if(pageSorts!=null){
 			params += pageSorts;
 		}

@@ -4,13 +4,11 @@ function login() {
 	
 	var userNo = document.getElementById('userNo').value;  
 	var userPass = document.getElementById('userPass').value; 
-	console.log(userNo);
-	console.log(userPass);
 	
 	remotePermission.login(userNo, userPass, function(errCode, errMsg, resultData){
 	    if(errCode == 0){
 	    	var fullUrl = gofirstConfig.domain + '/' + gofirstConfig.project +'/pages';
-	    	window.location.href=fullUrl+'/html/tOrder.html';  
+	    	window.location.href=fullUrl+"/html/tOrder.html";  
 	    }
 	    else{
 	        alert("登录失败！" + errMsg);

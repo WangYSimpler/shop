@@ -33,7 +33,7 @@ import org.springframework.web.bind.annotation.ResponseBody;
 
 import com.alibaba.fastjson.JSON;
 import com.alibaba.fastjson.JSONException;
-import com.gofirst.framework.response.ResponseResult;
+import com.gofirst.framework.bean.ResponseResult;
 import com.gofirst.framework.exception.PermissionException;
 import com.gofirst.framework.exception.ServiceException;
 import com.gofirst.framework.systemService.RepositoryCommonService;
@@ -95,31 +95,26 @@ public class RepositoryController {
 	@ResponseBody
 	public String doSave(HttpServletRequest request, HttpServletResponse response, @RequestBody String body,@PathVariable String repositoryName)
 			throws BeansException, NoSuchMethodException, IllegalAccessException, IllegalArgumentException,	InvocationTargetException, PermissionException, NoSuchFieldException, SecurityException {
+		//返回结果
 		Object obj = repoCommonService.commonOperator(SAVE, null, body, repositoryName, -1);
 		
 		
-		if (obj instanceof String || obj instanceof BigDecimal) {
+		if (obj instanceof String || obj instanceof BigDecimal  ) {
 			ResponseResult result = new ResponseResult();
 			// 设置成功的返回头
 			response.setHeader(ERROR_HEADER, ERROR_CODE_SUCCESS);
+			result.setData(JSON.toJSONString(obj));
 			
-			String successResultStr = "";
-			if (obj instanceof String) {
-				result.setData(JSON.toJSONString(obj));
-				successResultStr = JSON.toJSONString(result);
-			}else{
-				successResultStr = JSON.toJSONString(((BigDecimal) obj).intValue());
+			String successReslutStr = "";
+			
+			if (obj instanceof String ) {
+				successReslutStr = JSON.toJSONString(result);
+			}else if (obj instanceof BigDecimal) {
+				successReslutStr = JSON.toJSONString(obj);
 			}
 			
-			return  successResultStr; 
+			return successReslutStr;
 		}
-		/**
-		 * if (obj instanceof String) {
-		 * 
-		 * return JSON.toJSONString(result); }else if (obj instanceof
-		 * BigDecimal) { return JSON.toJSONString(((BigDecimal)
-		 * obj).intValue()); }
-		 */
 		
 		// 根据服务返回值，设置返回头error_code信息
 		String errorCode = obj.toString();

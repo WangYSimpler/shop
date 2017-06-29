@@ -55,6 +55,9 @@ public class RepositoryCommonServiceImpl implements RepositoryCommonService {
 	@Inject
 	private SystemConfigProperties sysConfig = null;
 
+	/**
+	 * gson
+	 */
 	//@Inject
 	//private Gson gson = null;
 
@@ -163,6 +166,9 @@ public class RepositoryCommonServiceImpl implements RepositoryCommonService {
 				body = params;
 			}
 			
+			//Object obj = JSON.parseObject(body, entityClass);
+			//System.out.println("body:" + body);
+			//body = "{\"createDatetime\":\"2017-12-05 12:12:16\",\"createUser\":\"admin1\",\"deleteFlag\":\"0\",\"employeeId\":\"1\",\"orgDeptId\":\"1\",\"organizationId\":\"1\",\"updateUser\":\"王勇\",\"userId\":\"22\",\"userName\":\"王勇\",\"userNo\":\"demo\",\"userPd\":\"c4ca4238a0b923820dcc509a6f75849b\",\"userStatus\":\"1\",\"userType\":\"3\"}";
 			Object obj = JSON.parseObject(body, entityClass);
 			if (type.equals(PARTUPDATE)) {
 				// 反射找到Id的类型
@@ -196,7 +202,7 @@ public class RepositoryCommonServiceImpl implements RepositoryCommonService {
 					}
 				}
 				// 新增数据返回id到前台
- 				if (type.equals(SAVE)) {
+				if (type.equals(SAVE)) {
 					String PKname = Helper.getPKName(entityClass);
 					Object savedObj = method.invoke(repository, obj);
 					Class<?> savedObjClass = savedObj.getClass();

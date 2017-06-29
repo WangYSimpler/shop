@@ -9,24 +9,28 @@ import org.springframework.transaction.annotation.Transactional;
  */
 public interface TUserService {
 
-
 	/**
-	 * 判断用户是否该用户
-	 * @param userNo 用户编号
-	 * @param pwd 密码
-	 * @param type 用户类型
-	 * @return
-	 */
-	//@Transactional(propagation=Propagation.REQUIRED,readOnly=true)
-	//public boolean isAuthenticatedUser(String userNo, String pwd, String type);
-	
-	/**
-	 * 用户密码判定
-	* @param userNoStr 用户编号
-	 * @param pwdStr 密码
+	 * 是否有权限登录
+	 * @param loginId	用户名
+	 * @param pwd	秘密
 	 * @return
 	 */
 	@Transactional(propagation=Propagation.REQUIRED,readOnly=true)
-	public boolean isAuthenticatedUser(String userNoStr, String pwdStr);
+	public boolean isAuthenticatedUser(String loginId, String pwd, String type);
+	
+	/**
+	 * 是否有权限登录
+	 * @param loginId	用户名
+	 * @param pwd	秘密
+	 * @return
+	 */
+	/**
+	 * 是否有权限登录
+	 * @param loginId	用户名
+	 * @param  pwd	秘密
+	 * @return
+	 */
+	@Transactional(propagation=Propagation.REQUIRED,readOnly=true)
+	public boolean isAuthenticatedUser(String loginId, String pwd);
 	
 }

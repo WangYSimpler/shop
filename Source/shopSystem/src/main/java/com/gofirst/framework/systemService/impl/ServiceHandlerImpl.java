@@ -25,7 +25,7 @@ import org.springframework.context.ApplicationContext;
 import com.alibaba.fastjson.JSON;
 import com.alibaba.fastjson.JSONArray;
 import com.alibaba.fastjson.JSONException;
-import com.gofirst.framework.response.ResponseResult;
+import com.gofirst.framework.bean.ResponseResult;
 import com.gofirst.framework.configure.SystemConfigProperties;
 import com.gofirst.framework.exception.PermissionException;
 import com.gofirst.framework.exception.ServiceException;

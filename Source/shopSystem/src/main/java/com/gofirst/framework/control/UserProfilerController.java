@@ -16,7 +16,7 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseBody;
 
 import com.alibaba.fastjson.JSON;
-import com.gofirst.framework.response.ResponseResult;
+import com.gofirst.framework.bean.ResponseResult;
 import com.gofirst.framework.systemService.UserProfilerService;
 import com.gofirst.framework.util.Constants;
 //import com.google.gson.Gson;
