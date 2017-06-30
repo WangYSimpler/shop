@@ -28,12 +28,16 @@ function creatTable(parent, headers, datas) {
 
         for (var k in  headers[0]) {
 
-            if(k != 'delete'){
+            if(k != 'delete' && k != 'add'){
                 var td = document.createElement("td");
                 td.innerHTML = datas[i][k];
                 tr.appendChild(td);
             }
         }
+        var tdAdd = document.createElement("td");
+        tdAdd.innerHTML = "<a href='javascript:'>添加</a>";
+        tr.appendChild(tdAdd);
+        
         var td = document.createElement("td");
         td.innerHTML = "<a href='javascript:'>删除</a>";
         tr.appendChild(td);
