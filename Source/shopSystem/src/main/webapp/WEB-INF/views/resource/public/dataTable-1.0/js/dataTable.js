@@ -28,19 +28,25 @@ function creatTable(parent, headers, datas) {
 
         for (var k in  headers[0]) {
 
-            if(k != 'delete' && k != 'add'){
+            if(k != 'delete' && k != 'update'){
                 var td = document.createElement("td");
                 td.innerHTML = datas[i][k];
                 tr.appendChild(td);
             }
         }
-        var tdAdd = document.createElement("td");
-        tdAdd.innerHTML = "<a href='javascript:'>添加</a>";
-        tr.appendChild(tdAdd);
+        ///编辑按钮
+        var tdUpdate = document.createElement("td");
+        tdUpdate.innerHTML = "<a href='javascript:'>编辑</a>";
+        tr.appendChild(tdUpdate);
         
         var td = document.createElement("td");
         td.innerHTML = "<a href='javascript:'>删除</a>";
         tr.appendChild(td);
+        
+        ///编辑按钮
+        tdUpdate.children[0].onclick = function () {
+        var a = this.parentElement.getAttribute("update");
+		}
 
         td.children[0].onclick = function () {
             var lines = tbody.children.length;
