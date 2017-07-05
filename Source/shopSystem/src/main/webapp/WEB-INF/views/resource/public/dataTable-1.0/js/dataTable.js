@@ -28,12 +28,17 @@ function creatTable(parent, headers, datas) {
 
         for (var k in  headers[0]) {
 
-            if(k != 'delete' && k != 'update'){
+            if(k != 'delete' && k != 'update' &&  k != 'create'){
                 var td = document.createElement("td");
                 td.innerHTML = datas[i][k];
                 tr.appendChild(td);
             }
         }
+        ///编辑按钮
+        var tdCreate = document.createElement("td");
+        tdCreate.innerHTML = "<a href='javascript:'>添加</a>";
+        tr.appendChild(tdCreate);
+        
         ///编辑按钮
         var tdUpdate = document.createElement("td");
         tdUpdate.innerHTML = "<a href='javascript:'>编辑</a>";
@@ -42,6 +47,10 @@ function creatTable(parent, headers, datas) {
         var td = document.createElement("td");
         td.innerHTML = "<a href='javascript:'>删除</a>";
         tr.appendChild(td);
+        
+        tdCreate.children[0].onclick = function () {
+            alert('创建')
+    		}
         
         ///编辑按钮
         tdUpdate.children[0].onclick = function () {
