@@ -14,6 +14,10 @@ import javax.persistence.Table;
 @Table(name = "T_DICT", schema = "SHOP")
 public class TDict implements java.io.Serializable {
 
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
 	private String id;
 	private String dictObject;
 	private String dictName;
