@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <title>用户管理</title>
+  <meta charset="utf-8">
+  <!-- build:css css/index.min.css -->
+  <link rel="stylesheet" href="../../resource/public/dataTable-1.1/css/normalize.css">
+  <link rel="stylesheet" href="../../resource/public/dataTable-1.1/css/bs-grid.css">
+  <link rel="stylesheet" href="../../resource/public/dataTable-1.1/css/bs-tables.css">
+  <link rel="stylesheet" href="../../resource/public/dataTable-1.1/css/bs-forms.css">
+  <link rel="stylesheet" href="../../resource/public/dataTable-1.1/css/bs-buttons.css">
+  <link rel="stylesheet" href="../../resource/public/dataTable-1.1/css/bs-modal.css">
+  <link rel="stylesheet" href="../../resource/public/dataTable-1.1/css/utilities.css">
+  <link rel="stylesheet" href="../../resource/public/dataTable-1.1/css/ui-loader.css">
+  <link rel="stylesheet" href="../../resource/public/dataTable-1.1/css/ui-toast.css">
+  <link rel="stylesheet" href="../../resource/public/dataTable-1.1/css/ui-toast.css">
+  <!-- endbuild -->
+</head>
+<body>
+
+  <div class="container">
+    <h3 class="pull-left">用户列表</h3>
+    <div class="pt10">
+      <button class="btn btn-primary add-btn pull-right ml20">新增</button>
+      <form class="form-inline pull-right" id="searchForm">
+        <input type="search" class="form-control" id="keyName" placeholder="请输入姓名"/>
+        <button type="submit" class="btn btn-primary ml10">搜索</button>
+      </form>
+    </div>
+    <table class="table table-bordered table-condensed" id="userTbl">
+      <thead>
+        <tr>
+          <th width="5%">编号</th>
+          <th width="30%">名称</th>
+          <th width="15%">密码</th>
+          <th width="20%">备注</th>
+          <th width="30%">操作</th>
+        </tr>
+      </thead>
+      <tbody>
+         <script type="text/html" id="usersTmp">
+        {{if users.length > 0}}
+        {{each users as user}}
+        <tr>
+          <td>{{user.userNo}}</td>
+          <td align="center">{{user.userName}}</td>
+          <td align="center">{{user.password}}</td>
+ 			<td align="left">{{user.remark}}</td>
+          <td align="center">
+            <button class="btn btn-sm btn-default edit-btn">修改</button><br><br>
+            <button class="btn btn-sm btn-default delete-btn">删除</button>
+          </td>
+        </tr>
+        {{/each}}
+        {{else}}
+        <tr>
+          <td colspan="4">暂无数据</td>
+        </tr>
+        {{/if}}
+        </script>
+      </tbody>
+    </table>
+    <!-- 用于分页条显示 -->
+    <div id="paginationWrapper" class="text-center"></div>
+  </div>
+
+  <form class="modal fade" id="userModal" tabindex="-1"
+    role="dialog" aria-labelledby="userModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+      <div class="modal-content"></div>
+    </div>
+  </form>
+
+  <!-- build:js js/index.min.js -->
+  <script type="text/javascript" src="../../resource/public/framework/remote-retriver.js"></script>
+  <script type="text/javascript" src="../../resource/public/framework/remote-permission.js"></script>
+  <script type="text/javascript" src="../../resource/public/framework/baseRequest.js"></script>
+  <script type="text/javascript" src="../../resource/public/config/config.js"></script>
+  <script src="../../resource/public/jquery/jquery.js"></script>
+  <script src="../../resource/public/jquery/jquery.validate.js"></script>
+  <script src="../../resource/public/jquery/jquery.validate.messages_zh.js"></script>
+  <script src="../../resource/public/dataTable-1.1/js/template.js"></script>
+  <script src="../../resource/public/dataTable-1.1/js/bs-modal.js"></script>
+  <script src="../../resource/public/dataTable-1.1/js/bm-confirm.js"></script>
+  <script src="../../resource/public/dataTable-1.1/js/ui-loader.js"></script>
+  <script src="../../resource/public/dataTable-1.1/js/ui-toast.js"></script>
+  <script src="../js/common.js"></script>
+  <script src="../js/tUser.js"></script>
+  <!-- endbuild -->
+</body>
+</html>

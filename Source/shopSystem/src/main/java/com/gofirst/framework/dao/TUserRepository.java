@@ -11,7 +11,7 @@ import com.gofirst.framework.annotation.Gateway;
 import com.gofirst.framework.bean.TUser;
 import com.gofirst.framework.customRepository.FrameworkRepository;
 
-@Repository(value="UserRepository")
+@Repository(value="TUserRepository")
 @EntityClass(entityClass=TUser.class)
 @Forbid(forbiddenMethods={"deleteAll"}) 
 @Gateway

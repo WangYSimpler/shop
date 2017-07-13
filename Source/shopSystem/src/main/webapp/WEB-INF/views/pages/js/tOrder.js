@@ -15,7 +15,7 @@ function queryTOrderAll(){
 	var params=[];
 	params.push('2017062700001');
 	   
-	    remoteRetriver.query('TOrderRepository', 'findAll','',null, 0,10,false,function(errCode, errMsg, resultData,totalCount,pageCount){
+	remoteRetriver.query('TOrderRepository', 'findAll','',null, 0,10,false,function(errCode, errMsg, resultData,totalCount,pageCount){
 	
 	if (errCode == 0) {
 		var datas =  JSON.parse(resultData);
