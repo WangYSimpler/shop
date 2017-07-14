@@ -47,8 +47,8 @@
           <td align="center">{{user.password}}</td>
  			<td align="left">{{user.remark}}</td>
           <td align="center">
-            <button class="btn btn-sm btn-default edit-btn">修改</button>&nsbn
-            <button class="btn btn-sm btn-default delete-btn">删除</button>
+            <button class="btn btn-sm btn-primary edit-btn" >修改</button>&nbsp;&nbsp;
+            <button class="btn btn-sm btn-default delete-btn" style="color:red;">删除</button>
           </td>
         </tr>
         {{/each}}
@@ -64,16 +64,17 @@
     <div id="paginationWrapper" class="text-center"></div>
   </div>
 
-  <form class="modal fade" id="userModal" tabindex="-1"
-    role="dialog" aria-labelledby="userModalLabel" aria-hidden="true">
+  <!--  -->
+  <form class="modal fade" id="userModal" tabindex="-1"  role="dialog" aria-labelledby="userModalLabel" aria-hidden="true">
     <div class="modal-dialog">
       <div class="modal-content"></div>
     </div>
   </form>
 
   <!-- build:js js/index.min.js -->
-  <script type="text/javascript" src="../../resource/public/framework/remote-retriver.js"></script>
   <script type="text/javascript" src="../../resource/public/framework/remote-permission.js"></script>
+  <script type="text/javascript" src="../../resource/public/framework/remote-retriver.js"></script>
+  <script type="text/javascript" src="../../resource/public/framework/remote-create.js"></script>
   <script type="text/javascript" src="../../resource/public/framework/baseRequest.js"></script>
   <script type="text/javascript" src="../../resource/public/config/config.js"></script>
   <script src="../../resource/public/jquery/jquery.js"></script>

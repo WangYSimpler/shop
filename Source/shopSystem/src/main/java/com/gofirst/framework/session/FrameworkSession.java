@@ -26,6 +26,8 @@ public interface FrameworkSession {
 	 */
 	public void setAttribute(Object key, Object value);
 	
+	public String getUserNo();
+	
 	/**
 	 * 获得用户唯一标识
 	 * @return	用户唯一标识

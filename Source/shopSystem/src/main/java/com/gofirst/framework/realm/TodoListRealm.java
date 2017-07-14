@@ -49,7 +49,7 @@ public class TodoListRealm extends AuthorizingRealm {
 		permissions.add("service:TInstrumentMarginService.*");*/
 		
 		permissions.add("dao:HyUsersRepository.*");
-		 permissions.add("dao:UserRepository.*");
+		permissions.add("dao:TUserRepository.*");
 		
 		permissions.add("dao:*.*");	
 		permissions.add("service:*.*");

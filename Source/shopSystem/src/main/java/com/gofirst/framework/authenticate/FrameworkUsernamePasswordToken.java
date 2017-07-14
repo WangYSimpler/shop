@@ -7,33 +7,28 @@ import org.apache.shiro.authc.UsernamePasswordToken;
  * 框架层封装UsernamePasswordToken，用以支持type
  *
  */
-public class FrameworkUsernamePasswordToken extends UsernamePasswordToken{
-	
+public class FrameworkUsernamePasswordToken extends UsernamePasswordToken {
+
 	/**
 	 * 
 	 */
 	private static final long serialVersionUID = 1L;
-	
+
 	private String type;
-	
-	
 
 	public FrameworkUsernamePasswordToken() {
 		super();
 	}
 
-	public FrameworkUsernamePasswordToken(String username, char[] password,
-			boolean rememberMe, String host) {
+	public FrameworkUsernamePasswordToken(String username, char[] password, boolean rememberMe, String host) {
 		super(username, password, rememberMe, host);
 	}
 
-	public FrameworkUsernamePasswordToken(String username, char[] password,
-			boolean rememberMe) {
+	public FrameworkUsernamePasswordToken(String username, char[] password, boolean rememberMe) {
 		super(username, password, rememberMe);
 	}
 
-	public FrameworkUsernamePasswordToken(String username, char[] password,
-			String host) {
+	public FrameworkUsernamePasswordToken(String username, char[] password, String host) {
 		super(username, password, host);
 	}
 
@@ -41,18 +36,15 @@ public class FrameworkUsernamePasswordToken extends UsernamePasswordToken{
 		super(username, password);
 	}
 
-	public FrameworkUsernamePasswordToken(String username, String password,
-			boolean rememberMe, String host) {
+	public FrameworkUsernamePasswordToken(String username, String password, boolean rememberMe, String host) {
 		super(username, password, rememberMe, host);
 	}
 
-	public FrameworkUsernamePasswordToken(String username, String password,
-			boolean rememberMe) {
+	public FrameworkUsernamePasswordToken(String username, String password, boolean rememberMe) {
 		super(username, password, rememberMe);
 	}
 
-	public FrameworkUsernamePasswordToken(String username, String password,
-			String host) {
+	public FrameworkUsernamePasswordToken(String username, String password, String host) {
 		super(username, password, host);
 	}
 

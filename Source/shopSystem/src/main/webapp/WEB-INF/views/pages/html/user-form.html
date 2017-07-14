@@ -7,15 +7,45 @@
 
 <div class="modal-body">
   <div id="userForm" class="form-horizontal">
-    <div class="form-group">
-      <label for="name" class="col-sm-2 control-label">姓名</label>
+
+	<div class="form-group">
+      <label for="userNo" class="col-sm-2 control-label">登录账号</label>
       <div class="col-sm-10">
-        <input type="text" class="form-control" id="name" name="name"
-          placeholder="请输入姓名" value="{{user.name}}" maxlength="20"
+        <input type="text" class="form-control" id="userNo" name="userNo"
+          placeholder="请输入编号" value="{{user.userNo}}" maxlength="50"
+          data-rule-required="true" data-rule-minlength="1">
+      </div>
+    </div>
+
+    <div class="form-group">
+      <label for="userName" class="col-sm-2 control-label">姓名</label>
+      <div class="col-sm-10">
+        <input type="text" class="form-control" id="userName" name="userName"
+          placeholder="请输入姓名" value="{{user.userName}}" maxlength="100"
           data-rule-required="true" data-rule-minlength="2">
       </div>
     </div>
-    <div class="form-group">
+
+	<!-- WangY 密码-->
+	<div class="form-group">
+      <label for="password" class="col-sm-2 control-label">密码</label>
+      <div class="col-sm-10">
+        <input type="text" class="form-control" id="password" name="password"
+          placeholder="请输入密码" value="{{user.password}}"
+          data-rule-required="true"   data-rule-minlength="6" data-rule-maxlength="50">
+      </div>
+    </div>
+
+	<!-- WangY 备注 -->
+	<div class="form-group">
+      <label for="remark" class="col-sm-2 control-label">备注</label>
+      <div class="col-sm-10">
+        <input type="text" class="form-control" id="remark" name="remark"
+          placeholder="请输入备注" value="{{user.remark}}" maxlength="20">
+      </div>
+    </div>
+
+    <!--<div class="form-group">
       <label for="age" class="col-sm-2 control-label">年龄</label>
       <div class="col-sm-10">
         <input type="text" class="form-control" id="age" name="age"
@@ -23,9 +53,9 @@
           data-rule-required="true" data-rule-number="true"
           data-rule-min="1" data-rule-max="200">
       </div>
-    </div>
+    </div>-->
 
-    <div class="form-group">
+   <!-- <div class="form-group">
       <label class="col-sm-2 control-label">性别</label>
       <div class="col-sm-10">
         <label class="radio-inline">
@@ -35,7 +65,9 @@
           <input type="radio" name="sex" value="0" {{user.sex === 0 ? "checked" : ""}}>女
         </label>
       </div>
-    </div>
+    </div> -->
+
+
   </div>
 </div>
 

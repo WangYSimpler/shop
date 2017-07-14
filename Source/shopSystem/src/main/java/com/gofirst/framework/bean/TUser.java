@@ -3,6 +3,7 @@ package com.gofirst.framework.bean;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 import javax.persistence.Table;
 
@@ -13,11 +14,23 @@ import javax.persistence.Table;
 @Table(name = "T_USER", schema = "SHOP")
 public class TUser implements java.io.Serializable {
 
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
+	@Id
+	@GeneratedValue
+	@Column(name = "ID", unique = true, nullable = false, length = 100)
 	private String id;
+	@Column(name = "USER_NO", length = 100)
 	private String userNo;
+	@Column(name = "USER_NAME", length = 200)
 	private String userName;
+	@Column(name = "PASSWORD", length = 100)
 	private String password;
+	@Column(name = "REMARK", length = 2000)
 	private String remark;
+	@Column(name = "FLAG", length = 1)
 	private Character flag;
 
 	public TUser() {
@@ -36,9 +49,7 @@ public class TUser implements java.io.Serializable {
 		this.flag = flag;
 	}
 
-	@Id
-
-	@Column(name = "ID", unique = true, nullable = false, length = 100)
+	
 	public String getId() {
 		return this.id;
 	}
@@ -47,7 +58,7 @@ public class TUser implements java.io.Serializable {
 		this.id = id;
 	}
 
-	@Column(name = "USER_NO", length = 100)
+	
 	public String getUserNo() {
 		return this.userNo;
 	}
@@ -56,7 +67,7 @@ public class TUser implements java.io.Serializable {
 		this.userNo = userNo;
 	}
 
-	@Column(name = "USER_NAME", length = 200)
+	
 	public String getUserName() {
 		return this.userName;
 	}
@@ -65,7 +76,7 @@ public class TUser implements java.io.Serializable {
 		this.userName = userName;
 	}
 
-	@Column(name = "PASSWORD", length = 100)
+	
 	public String getPassword() {
 		return this.password;
 	}
@@ -74,7 +85,7 @@ public class TUser implements java.io.Serializable {
 		this.password = password;
 	}
 
-	@Column(name = "REMARK", length = 2000)
+	
 	public String getRemark() {
 		return this.remark;
 	}
@@ -83,7 +94,7 @@ public class TUser implements java.io.Serializable {
 		this.remark = remark;
 	}
 
-	@Column(name = "FLAG", length = 1)
+	
 	public Character getFlag() {
 		return this.flag;
 	}

@@ -1,6 +1,5 @@
 package com.gofirst.framework.test;
 
-import java.math.BigDecimal;
 import java.util.Date;
 
 import javax.inject.Inject;
@@ -12,9 +11,9 @@ import org.springframework.test.context.ContextConfiguration;
 import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 import org.springframework.test.context.web.WebAppConfiguration;
 
-/*import com.gofirst.framework.bean.hy.HyUsers;
-import com.gofirst.framework.dao.HyUsersRepository;
-import com.gofirst.framework.service.HyUsersService;*/
+import com.gofirst.framework.bean.TUser;
+import com.gofirst.framework.dao.TUserRepository;
+import com.gofirst.framework.service.TUserService;
 
 
 @RunWith(SpringJUnit4ClassRunner.class)
@@ -22,16 +21,16 @@ import com.gofirst.framework.service.HyUsersService;*/
 @WebAppConfiguration
 public class HyUserServiceTest {
 	
-	/*@Inject
-	private HyUsersService hyUsersService;
+	@Inject
+	private TUserService hyUsersService;
 	
 	@Test
 	public void testAuthenticate() {
-		boolean actual = hyUsersService.isAuthenticatedUser("1", "1");
+		boolean actual = hyUsersService.isAuthenticatedUser("1", "888888");
 		Assert.assertEquals(true, actual);
 	}
 	
-	@Inject
+	/*@Inject
 	private HyUsersRepository hyUsersRepository;
 	
 	//@Inject
@@ -51,6 +50,6 @@ public class HyUserServiceTest {
 		hyUsersRepository.save(hyUsers);
 		//boolean actual = hyUsersService.isAuthenticatedUser("1", "1");
 		//Assert.assertEquals(true, actual);
-	}
-*/
+	}*/
+
 }

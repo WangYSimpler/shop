@@ -50,6 +50,12 @@ public class FrameworkSessionImpl implements FrameworkSession {
 		}
 		session.setAttribute(key, value);
 	}
+	
+	@Override
+	public String getUserNo() {
+		// TODO Auto-generated method stub
+		return userNo;
+	}
 
 	@Override
 	public String getUserId() {
@@ -88,5 +94,7 @@ public class FrameworkSessionImpl implements FrameworkSession {
 	public static FrameworkSessionImpl createSession(Session session, String userNo) {
 		return new FrameworkSessionImpl(session, userNo);
 	}
+
+	
 
 }
