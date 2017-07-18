@@ -1,4 +1,4 @@
-package com.gofirst.framework.bean;
+package com.gofirst.framework.response;
 
 import java.io.Serializable;
 

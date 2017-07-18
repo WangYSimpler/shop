@@ -135,7 +135,7 @@ $(function() {
 	 //var todo = JSON.stringify(user);
 	 //var todo = user;
 	 
-	 var todo =  {'id':'3','userNo':'1', 'userName':'王勇','flag':'0','password':'11111'};
+	 var todo =  {'id':'45','userNo':'1', 'userName':'王勇','flag':'0','password':'11111'};
 	 remoteCreate.create("TUserRepository", todo, true,function(errCode, errMsg, resultData){
      if(errCode == 0){
          alert("新建成功！");

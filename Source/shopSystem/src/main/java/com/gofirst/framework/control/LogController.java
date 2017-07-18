@@ -38,7 +38,7 @@ import org.springframework.web.bind.annotation.ResponseBody;
 import com.alibaba.fastjson.*;
 import com.gofirst.framework.authenticate.LoginService;
 import com.gofirst.framework.authenticate.LogoutService;
-import com.gofirst.framework.bean.ResponseResult;
+import com.gofirst.framework.response.ResponseResult;
 import com.gofirst.framework.util.CAUtil;
 import com.gofirst.framework.util.Constants;
 //import com.google.gson.Gson;

@@ -34,7 +34,7 @@ import org.springframework.web.multipart.MultipartHttpServletRequest;
 import com.alibaba.fastjson.JSON;
 import com.alibaba.fastjson.JSONArray;
 import com.alibaba.fastjson.JSONException;
-import com.gofirst.framework.bean.ResponseResult;
+import com.gofirst.framework.response.ResponseResult;
 import com.gofirst.framework.util.Constants;
 import com.gofirst.framework.util.Helper;
 //import com.google.gson.Gson;

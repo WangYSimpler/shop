@@ -22,7 +22,7 @@ public interface TOrderRepository extends CrudRepository<TOrder, Long>,Framework
 	///查询全部案件
 	public Iterable<TOrder>findAll(Pageable pageable);
 	
-	public Page<TOrder>findByFlag(Character flag, Pageable pageable);
+	public Page<TOrder>findByDelFlag(String delFlag, Pageable pageable);
 	public Page<TOrder>findByOrderNo(String orderNo, Pageable pageable);
 	
 	//有效订单: '0' 为有效
