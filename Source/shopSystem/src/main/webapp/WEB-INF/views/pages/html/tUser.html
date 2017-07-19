@@ -30,33 +30,33 @@
     <table class="table table-bordered table-condensed" id="userTbl">
       <thead>
         <tr>
-          <th width="5%">编号</th>
-          <th width="30%">名称</th>
-          <th width="15%">密码</th>
+          <th width="10%">账号</th>
+          <th width="20%">名称</th>
+          <th width="20%">密码</th>
           <th width="20%">备注</th>
           <th width="30%">操作</th>
         </tr>
       </thead>
       <tbody>
          <script type="text/html" id="usersTmp">
-        {{if users.length > 0}}
-        {{each users as user}}
-        <tr>
-          <td>{{user.userNo}}</td>
-          <td align="center">{{user.userName}}</td>
-          <td align="center">{{user.password}}</td>
- 			<td align="left">{{user.remark}}</td>
-          <td align="center">
-            <button class="btn btn-sm btn-primary edit-btn" >修改</button>&nbsp;&nbsp;
-            <button class="btn btn-sm btn-default delete-btn" style="color:red;">删除</button>
-          </td>
-        </tr>
-        {{/each}}
-        {{else}}
-        <tr>
-          <td colspan="4">暂无数据</td>
-        </tr>
-        {{/if}}
+			{{if users.length > 0}}
+			{{each users as user}}
+        	<tr>
+          		<td>{{user.userNo}}</td>
+          		<td align="center">{{user.userName}}</td>
+          		<td align="center">{{user.password}}</td>
+ 		  		<td align="left">{{user.remark}}</td>
+          		<td align="center">
+            	<button class="btn btn-sm btn-primary edit-btn" >修改</button> &nbsp;&nbsp;&nbsp;
+            	<button class="btn btn-sm btn-default delete-btn" style="color:red;">删除</button>
+         		</td>
+        		</tr>
+        		{{/each}}
+        		{{else}}
+        	<tr>
+          	<td colspan="4">暂无数据</td>
+       		</tr>
+        	{{/if}}
         </script>
       </tbody>
     </table>

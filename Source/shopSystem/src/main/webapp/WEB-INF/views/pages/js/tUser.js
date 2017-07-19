@@ -9,7 +9,7 @@ $(function() {
   // 搜索
   $('#searchForm').submit(function(e) {
     e.preventDefault();
-    read();
+    initRead();
   }).submit();
 
   // 点击新增按钮
@@ -19,7 +19,7 @@ $(function() {
       userName: '',
       password: '',
       remark:'',
-      flag:'1'
+      delFlag:'1'
     };
     ////添加用户
     isAdd = true;
@@ -32,7 +32,7 @@ $(function() {
     user = users[index];
     //编辑标志
     isAdd = false;
-    initUserForm(user, false);
+    initUserForm(user, isAdd);
   });
 
   /**
@@ -53,10 +53,8 @@ $(function() {
   // 表单验证
   App.initValidator();
 
-  userModal.validate({
-    submitHandler: function(form) {
-      $(form).find('button[type="submit"]')
-        .attr('disabled', true).addClass('disabled');
+  userModal.validate({ submitHandler: function(form) {
+      $(form).find('button[type="submit"]').attr('disabled', true).addClass('disabled');
       save();
     }
   });
@@ -70,14 +68,16 @@ $(function() {
     });
   });
 
-  /**
-   * 读取
-   */
-  function read() {
+  
+   //读取首页
+  function initRead() {
     loader.show();
     var key = $.trim($('#keyName').val());
-    
-    remoteRetriver.query('TUserRepository', 'findAll','',null, 0,10,false,function(errCode, errMsg, resultData,totalCount,pageCount){
+    ///获取数据排序
+    remoteRetriver.resetSortFileds();
+    var sortParams = remoteRetriver.addSortFiled('id',remoteRetriver.SORT_TYPE_ASC);
+    //查询第一页
+    remoteRetriver.query('TUserRepository', 'findAll','',sortParams, 0,10,false,function(errCode, errMsg, resultData,totalCount,pageCount){
     	
     	if (errCode == 0) {
     		var datas =  JSON.parse(resultData);
@@ -88,76 +88,59 @@ $(function() {
     		alert('查询失败!!!' + errMsg);
     	}
     	});
-   /* $.get(App.baseUrl + '/users?q={"name":{"$regex":"' + key + '"}}&apiKey=' + App.apiKey, function(data) {
-      loader.remove();
-      users = data;
-      tbody.html(template('usersTmp', {users: users}));
-    });*/
   }
 
   /**
-   * 新增编辑
+   * 保存数据，包括了增加和修改
    */
   function save() {
-	user.userNo =  parseInt($('#userNo').val());
+	user.userNo   = $('#userNo').val();
     user.userName = $('#userName').val();
-    user.password =$('#password').val();
-    user.remark =$('#remark').val();
+    user.password = $('#password').val();
+    user.remark   = $('#remark').val();
     
-   /* user.age = parseInt($('#age').val());
-    user.sex = parseInt($('input[name="sex"]:checked').val());*/
     loader.show();
     
     if (isAdd) {
 		rCreate(user);
 	}else{
-		rUpdate();
+		rUpdate(user);
 	}
-    loader.remove();
-    tbody.html(template('usersTmp', {users: users,isAdd: isAdd}));
-    
-    /*$.post(App.baseUrl + '/users?apiKey=' + App.apiKey,   JSON.stringify(user), function(data) {
-        userModal.modal('hide');
-        loader.remove();
-        // _id为空则新增
-        isAdd = user._id === undefined;
-        if (isAdd) {
-          users.push(user)
-        } else {
-          users[index] = user;
-        }
-        tbody.html(template('usersTmp', {users: users,isAdd: isAdd}));
-      });*/
   }
 
   
   function rCreate(user){
-	 //var todo = JSON.stringify(user);
-	 //var todo = user;
-	 
-	 var todo =  {'id':'45','userNo':'1', 'userName':'王勇','flag':'0','password':'11111'};
+	  
+	 var todo = user;
 	 remoteCreate.create("TUserRepository", todo, true,function(errCode, errMsg, resultData){
-     if(errCode == 0){
-         alert("新建成功！");
-     }
-     else{
-         alert("新建失败！" + errMsg);
-     }});
+
+		 if(errCode == 0){
+	         alert("新建成功！");
+	         //users.push(user);
+	         initRead();
+	         userModal.modal('hide');
+	         loader.remove();
+	         tbody.html(template('usersTmp', {users: users,isAdd: isAdd}));
+	     } else{ alert("新建失败！" + errMsg); }
+     });
  }
   
-  function rUpdate(){
-	    var id = 1;
-	    if(!confirm("将更新id为" + id + "的记录!"))
-        return;
-    var todo = {"id":1, "title":"测试数据标题更新", "content":"测试数据内容更新"};
-    cffex.repository.update("toDoRepository", id, todo, false, function(errCode, errMsg, resultData){
-        if(errCode == 0){
-            alert("更新成功！");
-        }
-        else{
-            alert("更新失败！" + errMsg);
-        }
-    });
+  function rUpdate(user){
+	  
+	var id = user.id;
+	var todo = user;
+	remoteUpdate.update("TUserRepository", id, todo, false, function(errCode, errMsg, resultData){
+	    if(errCode == 0){
+	        alert("更新成功！");
+	        initRead();
+	        userModal.modal('hide');
+	        loader.remove();
+	        tbody.html(template('usersTmp', {users: users,isAdd: isAdd}));
+	    }
+	    else{
+	        alert("更新失败！" + errMsg);
+	    }
+	});
   }
   /**
    * 删除

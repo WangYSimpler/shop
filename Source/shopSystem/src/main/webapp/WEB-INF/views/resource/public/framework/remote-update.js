@@ -1,4 +1,5 @@
-var RemoteUpdater = {
+var remoteUpdate = {
+		
     /**
      * 发起请求
      * @param {number} id 要更新的id
@@ -9,6 +10,7 @@ var RemoteUpdater = {
         var url = '/repository/' + repositoryName + '/' + id;
         baseRequest.sendPost(url, data, async, callback);
     },
+    
     /**
      * 发起请求
      * @param {number} id 要更新的id
