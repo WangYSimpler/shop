@@ -14,9 +14,7 @@ import org.apache.log4j.Logger;
  */
 @Named
 public class SystemConfigProperties implements Configuration {
-	/**
-	 * 日志
-	 */
+	
 	private static Logger logger = Logger.getLogger(ConfigureProperties.class);
 
 	/**

@@ -21,7 +21,6 @@ import com.mchange.v2.c3p0.DataSources;
 
 /**
  * Jpa 配置
- * 
  * @author WangY
  */
 @EnableTransactionManagement
@@ -46,7 +45,6 @@ public class JpaConfig {
 
 	/**
 	 * entityManagerFactory
-	 * 
 	 * @return
 	 * @throws SQLException
 	 */

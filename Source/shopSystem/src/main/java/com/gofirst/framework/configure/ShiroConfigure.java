@@ -94,10 +94,7 @@ public class ShiroConfigure {
 		return sm;
 	}
 
-	/**
-	 * Shiro AOP
-	 * @return
-	 */
+
 	@Bean
 	public AuthorizationAttributeSourceAdvisor getAuthorizationAttributeSourceAdvisor() {
 

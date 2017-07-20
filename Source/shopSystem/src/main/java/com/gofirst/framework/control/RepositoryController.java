@@ -40,7 +40,6 @@ import com.gofirst.framework.systemService.RepositoryCommonService;
 import com.gofirst.framework.systemService.RepositoryQueryService;
 import com.gofirst.framework.util.Constants;
 import com.gofirst.framework.util.Helper;
-//import com.google.gson.Gson;
 
 /**
  * 通用dao处理器 根据模型名字转发到相应的Repository.
@@ -48,9 +47,6 @@ import com.gofirst.framework.util.Helper;
 @Controller
 public class RepositoryController {
 
-	/**
-	 * loggerbvc
-	 */
 	@SuppressWarnings("unused")
 	private static final Logger logger = Logger.getLogger(RepositoryController.class);
 
@@ -61,12 +57,6 @@ public class RepositoryController {
 	@Autowired(required = true)
 	private ApplicationContext context;
 
-	/**
-	 * gson
-	 */
-	//@Autowired(required = true)
-	//private Gson gson = null;
-
 	@Autowired(required = true)
 	private RepositoryCommonService repoCommonService;
 
@@ -76,12 +66,9 @@ public class RepositoryController {
 	/**
 	 * 处理dao的save的请求.
 	 * 
-	 * @param request
-	 *            http request
-	 * @param response
-	 *            http response
-	 * @param repositoryName
-	 *            访问的后台repository名字
+	 * @param request  http request
+	 * @param response http response
+	 * @param repositoryName 访问的后台repository名字
 	 * @throws InvocationTargetException
 	 * @throws IllegalArgumentException
 	 * @throws IllegalAccessException
@@ -97,7 +84,6 @@ public class RepositoryController {
 			throws BeansException, NoSuchMethodException, IllegalAccessException, IllegalArgumentException,	InvocationTargetException, PermissionException, NoSuchFieldException, SecurityException {
 		//返回结果
 		Object obj = repoCommonService.commonOperator(SAVE, null, body, repositoryName, -1);
-		
 		
 		if (obj instanceof String || obj instanceof BigDecimal  ) {
 			ResponseResult result = new ResponseResult();
@@ -118,15 +104,6 @@ public class RepositoryController {
 		
 		// 根据服务返回值，设置返回头error_code信息
 		String errorCode = obj.toString();
-		
-		/**
-		 * String errorCode ="";
-		 * if (obj instanceof BigDecimal) {
-		 *	errorCode = obj.toString();
-		 * }else{
-		 * errorCode = (String) obj;
-		 *  }
-		*/
 		
 		response.setHeader(ERROR_HEADER, errorCode);
 		return null;
@@ -177,8 +154,7 @@ public class RepositoryController {
 	@RequestMapping(value = "/repository/partUpdate/{repositoryName}/{id}", method = RequestMethod.POST, produces = FORMAT)
 	public void doPartUpdate(HttpServletRequest request, HttpServletResponse response,
 			@PathVariable String repositoryName, @PathVariable Object id)
-			throws BeansException, NoSuchMethodException, IllegalAccessException, IllegalArgumentException,
-			InvocationTargetException, PermissionException, NoSuchFieldException, SecurityException {
+			throws BeansException, NoSuchMethodException, IllegalAccessException, IllegalArgumentException,	InvocationTargetException, PermissionException, NoSuchFieldException, SecurityException {
 		String params = request.getParameter(Constants.PARAMS);
 		String errorCode = (String) repoCommonService.commonOperator(PARTUPDATE, params, null, repositoryName, id);
 		// 根据服务返回值，设置返回头error_code信息
@@ -187,13 +163,10 @@ public class RepositoryController {
 
 	/**
 	 * 处理dao删除的请求.
+	 * @param response http response
+	 * @param repositoryName 访问的后台repository名字
+	 * @param id 需要删除的id
 	 * 
-	 * @param response
-	 *            http response
-	 * @param repositoryName
-	 *            访问的后台repository名字
-	 * @param id
-	 *            需要删除的id
 	 * @throws InvocationTargetException
 	 * @throws IllegalArgumentException
 	 * @throws IllegalAccessException
@@ -233,8 +206,8 @@ public class RepositoryController {
 	@Transactional(readOnly = true)
 	public @ResponseBody String query(HttpServletRequest request, HttpServletResponse response,
 			@PathVariable String repositoryName, @PathVariable String funcName)
-			throws JSONException, SQLException, BeansException, IllegalAccessException, IllegalArgumentException,
-			InvocationTargetException, PermissionException, ServiceException {
+			throws JSONException, SQLException, BeansException, IllegalAccessException, IllegalArgumentException,InvocationTargetException, PermissionException, ServiceException {
+		
 		String params = null;
 		Map<String, String[]> paramMap = request.getParameterMap();
 		if (paramMap.get(Constants.PARAMS) != null) {

@@ -37,8 +37,7 @@ public class DownloadController {
 	/**
 	 * logger
 	 */
-	private static final Logger logger = Logger
-			.getLogger(DownloadController.class);
+	private static final Logger logger = Logger.getLogger(DownloadController.class);
 	
 	/**
 	 * spring context

@@ -12,7 +12,6 @@ public class CommonUtil {
 	  if (str == null || str.equals("")) {
 		  flag = true;
 	  }
-	  
 	  return flag;
 	}
 	

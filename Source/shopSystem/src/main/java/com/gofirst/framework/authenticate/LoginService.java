@@ -22,7 +22,6 @@ public interface LoginService {
 	 * @throws IncorrectCredentialsException	密码错误
 	 * @throws LockedAccountException	账户锁定
 	 */
-	public Subject login(String userNo, String password, String type) 
-			throws UnknownAccountException, IncorrectCredentialsException, LockedAccountException;
+	public Subject login(String userNo, String password, String type) throws UnknownAccountException, IncorrectCredentialsException, LockedAccountException;
 	
 }

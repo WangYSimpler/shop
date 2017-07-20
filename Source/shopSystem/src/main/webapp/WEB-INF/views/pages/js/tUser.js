@@ -42,7 +42,8 @@ $(function() {
    */
   function initUserForm(user, isAdd) {
     $('.modal-content').load('../html/user-form.html', function() {
-      $(this).html(template('userTmp', {
+      $(this).html(template('userTmp',
+    	{
         user: user,
         isAdd: isAdd
       }));
@@ -127,7 +128,7 @@ $(function() {
   
   function rUpdate(user){
 	  
-	var id = user.id;
+	var id = parseInt(user.id);
 	var todo = user;
 	remoteUpdate.update("TUserRepository", id, todo, false, function(errCode, errMsg, resultData){
 	    if(errCode == 0){

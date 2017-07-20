@@ -42,11 +42,8 @@ import com.gofirst.framework.util.Helper;
 @Controller
 public class UploadController {
 	
-	/**
-	 * logger
-	 */
-	private static final Logger logger = Logger
-			.getLogger(UploadController.class);
+	//loger
+	private static final Logger logger = Logger.getLogger(UploadController.class);
 	
 	/**
 	 * spring context

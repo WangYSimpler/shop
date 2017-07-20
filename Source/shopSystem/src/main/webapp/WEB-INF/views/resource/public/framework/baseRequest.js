@@ -5,13 +5,14 @@ var baseRequest={
 
     sendGet: function (url, params, async, callback) {
         var fullUrl = gofirstConfig.domain + '/' + gofirstConfig.project + url;
-        this._request(fullUrl, 'GET', params,async,  true, callback);
+        this._request(fullUrl,'GET', params,async,  true, callback);
     },
     //post方式发送请求
     sendPost: function (url, data, async, callback) {
         var fullUrl = gofirstConfig.domain + '/' + gofirstConfig.project + url;
-        var dataParams = "params=" + JSON.stringify(data) ;
-        this._request(fullUrl, 'POST',  dataParams,async,false, callback);
+        var dataParams = 'params=' + encodeURIComponent(JSON.stringify(data));
+        //var dataParams = "params=" + JSON.stringify(data) ;
+        this._request(fullUrl,'POST',dataParams,async,false, callback);
     },
 
     /**

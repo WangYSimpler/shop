@@ -40,14 +40,6 @@ public class ServiceController {
 	@Autowired(required = true)
 	private ApplicationContext context;
 	
-	
-	/**
-	 * gson
-	 */
-	//@SuppressWarnings("unused")
-	//@Autowired(required = true)
-	//private Gson gson = null;
-	
 	/**
 	 * java validator
 	 */

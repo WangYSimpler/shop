@@ -139,9 +139,9 @@ public class Helper {
 		
 		///排序字符串
 		String[] orderSort = orderSortStrs;
-
 		///中间获取
 		List<Order> allOrder = new ArrayList<Order>();
+		
 		for(String orderStr : orderSort){
 			 String SortStr = "";
 			//排序方式
@@ -203,9 +203,6 @@ public class Helper {
 		return propertiesList;
 	}
 	
-	
-	
-
 	/**
 	 * 获取所有的接口方法
 	 * @param o 对象
@@ -428,7 +425,7 @@ public class Helper {
 			permissions = (Set<String>) session.getAttribute(Constants.SESSION_PERMISSION);
 			logger.info("session 大小: " + permissions.size());
 		}
-		// �õ�ָ�����͵�Ȩ��
+		
 		for (String permission : permissions) {
 			if (permission.contains(type)) {
 				String part = permission.split(Constants.COLON)[1];

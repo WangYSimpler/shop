@@ -32,17 +32,10 @@ public class UserProfilerController {
 	/**
 	 * logger
 	 */
-	private static final Logger logger = Logger
-			.getLogger(UserProfilerController.class);
+	private static final Logger logger = Logger.getLogger(UserProfilerController.class);
 	
 	@Autowired
 	private UserProfilerService userProfilerService;
-	
-	/**
-	 * gson
-	 */
-	//@Autowired(required = true)
-	//private Gson gson = null;
 	
 	@RequestMapping(value="/user/profile", method = RequestMethod.GET, produces = Constants.FORMAT)
 	public @ResponseBody

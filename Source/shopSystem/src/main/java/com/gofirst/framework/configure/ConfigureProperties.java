@@ -30,7 +30,6 @@ public class ConfigureProperties implements Configuration {
 
 	/**
 	 * 构造
-	 * 
 	 * @throws Exception
 	 */
 	public ConfigureProperties() {
@@ -44,7 +43,6 @@ public class ConfigureProperties implements Configuration {
 
 	/**
 	 * 获取属性
-	 * 
 	 * @param key
 	 * @return
 	 */
@@ -54,7 +52,6 @@ public class ConfigureProperties implements Configuration {
 
 	/**
 	 * 获取属性,如果没有则返回默认值
-	 * 
 	 * @param key
 	 * @param defaultValue
 	 * @return

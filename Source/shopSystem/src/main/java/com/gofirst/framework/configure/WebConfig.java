@@ -39,28 +39,12 @@ public class WebConfig extends WebMvcConfigurerAdapter {
 	@Inject
 	private SessionInterceptor sessionInterceptor = null;
 
-	/*
-	 * (non-Javadoc)
-	 * 
-	 * @see
-	 * org.springframework.web.servlet.config.annotation.WebMvcConfigurerAdapter
-	 * #addInterceptors(org.springframework.web.servlet.config.annotation.
-	 * InterceptorRegistry)
-	 */
 	@Override
 	public void addInterceptors(InterceptorRegistry registry) {
 
 		registry.addInterceptor(sessionInterceptor);
 	}
 
-	/*
-	 * (non-Javadoc)
-	 * 
-	 * @see
-	 * org.springframework.web.servlet.config.annotation.WebMvcConfigurerAdapter
-	 * #addResourceHandlers(org.springframework.web.servlet.config.annotation.
-	 * ResourceHandlerRegistry)
-	 */
 	@Override
 	public void addResourceHandlers(ResourceHandlerRegistry registry) {
 
@@ -70,16 +54,8 @@ public class WebConfig extends WebMvcConfigurerAdapter {
 		registry.addResourceHandler("/**").addResourceLocations("/WEB-INF/views/");
 	}
 
-	/*
-	 * (non-Javadoc)
-	 * 
-	 * @see
-	 * org.springframework.web.servlet.config.annotation.WebMvcConfigurerAdapter
-	 * #addViewControllers(org.springframework.web.servlet.config.annotation.
-	 * ViewControllerRegistry)
-	 */
+	//
 	public void addViewControllers(ViewControllerRegistry registry) {
-
 		// registry.addRedirectViewController(urlPath, redirectUrl)
 
 	}

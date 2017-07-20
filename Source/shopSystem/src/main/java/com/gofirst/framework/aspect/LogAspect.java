@@ -20,6 +20,7 @@ import org.springframework.web.context.request.ServletRequestAttributes;
 
 import com.alibaba.fastjson.JSON;
 //import com.google.gson.Gson;
+import com.gofirst.framework.util.Constants;
 
 /**
  * 日志记录与消耗时间记录
@@ -103,7 +104,7 @@ public class LogAspect {
 		String methodName = joinPoint.getSignature().getName();
 		//进入接口
 		logger.info("进入 controllerMethod : " + className + " 的方法 : " + methodName);
-	
+		
 		Map<?, ?> paramMap = request.getParameterMap();
 		
 		// 打印请求中的参数到日志中
