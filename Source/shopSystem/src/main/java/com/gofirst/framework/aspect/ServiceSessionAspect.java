@@ -18,9 +18,6 @@ import com.gofirst.framework.util.Constants;
 @Named
 public class ServiceSessionAspect {
 
-	/**
-	 * logger
-	 */
 	private static final Logger logger = Logger.getLogger(ServiceSessionAspect.class);
 	
 	@Pointcut("execution(public * com..service..*.*(..)) ")

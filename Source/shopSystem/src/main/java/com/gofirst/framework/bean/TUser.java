@@ -1,5 +1,4 @@
 package com.gofirst.framework.bean;
-// Generated 2017-7-18 8:53:23 by Hibernate Tools 4.0.0.Final
 
 import java.math.BigDecimal;
 import java.util.Date;
@@ -18,9 +17,6 @@ import javax.persistence.TemporalType;
 @Table(name = "T_USER")
 public class TUser implements java.io.Serializable {
 
-	/**
-	 * 
-	 */
 	private static final long serialVersionUID = 1L;
 	@Id
 	@GeneratedValue

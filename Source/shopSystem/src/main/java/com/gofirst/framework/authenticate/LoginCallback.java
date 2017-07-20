@@ -5,9 +5,7 @@ import org.apache.shiro.subject.Subject;
 import com.gofirst.framework.session.FrameworkSession;
 
 /**
- *
- * login之后的回调 
- *
+ *   login之后的回调方法
  */
 public interface LoginCallback {
 

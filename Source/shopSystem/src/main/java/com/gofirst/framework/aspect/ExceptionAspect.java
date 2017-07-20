@@ -43,15 +43,7 @@ import com.gofirst.framework.exception.ServiceException;
 @Named
 public class ExceptionAspect {
 
-	/**
-	 * gson
-	 */
-	//@Inject
-	//private Gson gson = null;
-
-	/**
-	 * logger
-	 */
+	//logger
 	private static final Logger logger = Logger.getLogger(ExceptionAspect.class);
 
 	@Pointcut("execution(public * com..control.*.*(..)) ")
@@ -60,7 +52,6 @@ public class ExceptionAspect {
 
 	/**
 	 * 给入参使用utf-8解码
-	 * 
 	 * @param joinPoint
 	 * @return
 	 * @throws Throwable

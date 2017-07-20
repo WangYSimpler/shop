@@ -61,8 +61,7 @@ public class SessionAttributeAspect {
 			return obj;
 		}
 
-		FrameworkSessionImpl.getSession().setAttribute(
-				sessionAttributes[0].value(), obj);
+		FrameworkSessionImpl.getSession().setAttribute(sessionAttributes[0].value(), obj);
 
 		return obj;
 

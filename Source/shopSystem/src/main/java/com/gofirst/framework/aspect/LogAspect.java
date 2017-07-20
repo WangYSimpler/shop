@@ -101,24 +101,19 @@ public class LogAspect {
 		HttpServletRequest request = ((ServletRequestAttributes) RequestContextHolder.getRequestAttributes()).getRequest();
 		String className = joinPoint.getSignature().getDeclaringType().getSimpleName();
 		String methodName = joinPoint.getSignature().getName();
-		//
+		//进入接口
 		logger.info("进入 controllerMethod : " + className + " 的方法 : " + methodName);
 	
 		Map<?, ?> paramMap = request.getParameterMap();
-		///测试Map
-		System.out.println("请求参数" + paramMap );
 		
 		// 打印请求中的参数到日志中
 		StringBuilder sb = new StringBuilder();
 		Set<?> keySet = paramMap.keySet();
 		
-		////测试
-		System.out.println("/************* keySet: " + keySet);
-		
 		for (Iterator<?> iterator = keySet.iterator(); iterator.hasNext();) {
 			Object key = iterator.next();
 			//测试
-			System.out.println("/**/ key : " +key.toString() +" : " +"paramMap.get(key):" + paramMap.get(key));
+			logger.info("key : " +key.toString() +" : " +"paramMap.get(key): " + paramMap.get(key).toString());
 			sb.append(JSON.toJSON(paramMap.get(key)));
 		}
 		logger.info("请求的参数 requestParameters : " + sb.toString());

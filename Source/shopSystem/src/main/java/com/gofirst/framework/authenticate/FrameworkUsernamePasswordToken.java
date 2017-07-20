@@ -9,9 +9,6 @@ import org.apache.shiro.authc.UsernamePasswordToken;
  */
 public class FrameworkUsernamePasswordToken extends UsernamePasswordToken {
 
-	/**
-	 * 
-	 */
 	private static final long serialVersionUID = 1L;
 
 	private String type;
