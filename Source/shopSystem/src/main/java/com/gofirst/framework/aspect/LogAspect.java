@@ -20,7 +20,6 @@ import org.springframework.web.context.request.ServletRequestAttributes;
 
 import com.alibaba.fastjson.JSON;
 //import com.google.gson.Gson;
-import com.gofirst.framework.util.Constants;
 
 /**
  * 日志记录与消耗时间记录
