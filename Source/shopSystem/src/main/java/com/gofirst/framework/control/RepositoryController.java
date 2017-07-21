@@ -19,6 +19,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import org.apache.log4j.Logger;
+import org.apache.shiro.authc.AuthenticationException;
 import org.springframework.beans.BeansException;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.ApplicationContext;
@@ -33,6 +34,7 @@ import org.springframework.web.bind.annotation.ResponseBody;
 
 import com.alibaba.fastjson.JSON;
 import com.alibaba.fastjson.JSONException;
+import com.alibaba.fastjson.JSONObject;
 import com.gofirst.framework.response.ResponseResult;
 import com.gofirst.framework.exception.PermissionException;
 import com.gofirst.framework.exception.ServiceException;
@@ -125,11 +127,19 @@ public class RepositoryController {
 	 * @throws NoSuchFieldException
 	 */
 	@RequestMapping(value = "/repository/{repositoryName}/{id}", method = RequestMethod.POST, produces = FORMAT)
-	public void doUpdate(HttpServletRequest request, HttpServletResponse response, @PathVariable String repositoryName,
-			@PathVariable Object id)
-			throws BeansException, NoSuchMethodException, IllegalAccessException, IllegalArgumentException,
-			InvocationTargetException, PermissionException, NoSuchFieldException, SecurityException {
-		String params = request.getParameter(Constants.PARAMS);
+	public void doUpdate(HttpServletRequest request, HttpServletResponse response, @PathVariable String repositoryName, @PathVariable Object id)
+			throws BeansException, NoSuchMethodException, IllegalAccessException, IllegalArgumentException,InvocationTargetException, PermissionException, NoSuchFieldException, SecurityException {
+		String params = null;
+		Map<String, String[]> paramMap = request.getParameterMap();
+		if (paramMap.get(Constants.PARAMS) != null) {
+			params = paramMap.get(Constants.PARAMS)[0];
+		}
+		if (params == null) {
+			throw new AuthenticationException();
+		}
+		
+		JSONObject jsonObject = JSON.parseObject(params);
+		//String params = request.getParameter(Constants.PARAMS);
 		String errorCode = (String) repoCommonService.commonOperator(UPDATE, params, null, repositoryName, id);
 		// 根据服务返回值，设置返回头error_code信息
 		response.setHeader(ERROR_HEADER, errorCode);

@@ -35,7 +35,6 @@ public interface RepositoryCommonService {
 	 * @throws NoSuchFieldException
 	 */
 	public Object commonOperator(String type, String params, String body, String repositoryName, Object id)
-			throws BeansException, NoSuchMethodException, IllegalAccessException, IllegalArgumentException,
-			InvocationTargetException, PermissionException, NoSuchFieldException, SecurityException;
+			throws BeansException, NoSuchMethodException, IllegalAccessException, IllegalArgumentException,	InvocationTargetException, PermissionException, NoSuchFieldException, SecurityException;
 
 }

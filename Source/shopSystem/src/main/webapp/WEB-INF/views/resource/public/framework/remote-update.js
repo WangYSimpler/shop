@@ -19,7 +19,7 @@ var remoteUpdate = {
      * */
     partUpdate: function (repositoryName, id, data, async, callback) {
         var url = '/repository/partUpdate/' + repositoryName + '/' + id;
-        var request = new baseRequest(url,async);
+        //var request = new baseRequest(url,async);
         baseRequest.sendPost(url, data, async, callback);
     }
 }
