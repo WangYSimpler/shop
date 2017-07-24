@@ -129,17 +129,7 @@ public class RepositoryController {
 	@RequestMapping(value = "/repository/{repositoryName}/{id}", method = RequestMethod.POST, produces = FORMAT)
 	public void doUpdate(HttpServletRequest request, HttpServletResponse response, @PathVariable String repositoryName, @PathVariable Object id)
 			throws BeansException, NoSuchMethodException, IllegalAccessException, IllegalArgumentException,InvocationTargetException, PermissionException, NoSuchFieldException, SecurityException {
-		String params = null;
-		Map<String, String[]> paramMap = request.getParameterMap();
-		if (paramMap.get(Constants.PARAMS) != null) {
-			params = paramMap.get(Constants.PARAMS)[0];
-		}
-		if (params == null) {
-			throw new AuthenticationException();
-		}
-		
-		JSONObject jsonObject = JSON.parseObject(params);
-		//String params = request.getParameter(Constants.PARAMS);
+		String params = request.getParameter(Constants.PARAMS);
 		String errorCode = (String) repoCommonService.commonOperator(UPDATE, params, null, repositoryName, id);
 		// 根据服务返回值，设置返回头error_code信息
 		response.setHeader(ERROR_HEADER, errorCode);

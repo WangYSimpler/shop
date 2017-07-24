@@ -6,7 +6,7 @@
  */
 function login(){
 
-   remotePermission.login("1", "1", function(errCode, errMsg, resultData){
+   remotePermission.login("1", "888888", function(errCode, errMsg, resultData){
 	   
 	   console.log('resultData :' + resultData)
         if(errCode == 0){
@@ -70,7 +70,7 @@ function queryUserNo(){
     
   
     //'["1","0"]'
-    remoteRetriver.queryList('HyUsersRepository', 'findByUserNoAndDeleteFlag', params,false,function(errCode, errMsg, resultData,totalCount,pageCount){
+    remoteRetriver.queryList('TUserRepository', 'findByUserNoAndDeleteFlag', params,false,function(errCode, errMsg, resultData,totalCount,pageCount){
     	
     	console.log(resultData);
         if(errCode == 0){
@@ -87,9 +87,8 @@ function queryUserNo(){
 function rCreate(){
    
 	//var todo =  {"createDatetime":1481644800000,"createUser":"admin","deleteFlag":"0","employeeId":1,"orgDeptId":1,"organizationId":1,"updateDatetime":1486915200000,"updateUser":"王勇","userId":11,"userName":"王勇","userNo":"demo","userPd":"c4ca4238a0b923820dcc509a6f75849b","userStatus":"1","userType":"3"};
-	var todo =  {'createDatetime':'2017-12-05 14:12:16','createUser':'admin','deleteFlag':'0','employeeId':'1','orgDeptId':'1','organizationId':'1','updateUser':'王勇',
-			     'userName':'王勇','userNo':'demo','userPd':'c4ca4238a0b923820dcc509a6f75849b','userStatus':'1','userType':'3'};
-    remoteCreate.create("HyUsersRepository", todo, true,function(errCode, errMsg, resultData){
+	var todo =  {"delFlag":"1","password":"111111","userName":"测试","userNo":"6"};
+    remoteCreate.create("TUserRepository", todo, true,function(errCode, errMsg, resultData){
         if(errCode == 0){
             alert("新建成功！");
         }
@@ -100,11 +99,9 @@ function rCreate(){
 }
 
 function rUpdate(){
-    var id = 1;
-    if(!confirm("将更新id为" + id + "的记录!"))
-        return;
-    var todo = {"id":1, "title":"测试数据标题更新", "content":"测试数据内容更新"};
-    cffex.repository.update("toDoRepository", id, todo, false, function(errCode, errMsg, resultData){
+    var id = 61;
+    var todo =  {"delFlag":"1","id":61,"password":"111111","userName":"Array","userNo":"6"};
+    remoteUpdate.update("TUserRepository", id, todo, false, function(errCode, errMsg, resultData){
         if(errCode == 0){
             alert("更新成功！");
         }

@@ -17,6 +17,10 @@ import javax.persistence.TemporalType;
 @Table(name = "T_ORDER")
 public class TOrder implements java.io.Serializable {
 
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
 	private BigDecimal id;
 	private String orderNo;
 	private String orderName;

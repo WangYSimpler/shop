@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title>java后端框架web请求测试Demo1.0</title>
+
+    <script src="../../resource/public/config/config.js"></script>
+    <script src="../../resource/public/jquery/jquery-1.8.0.min.js"></script>
+    <script src="../js/test.js"></script>
+    <script src="../../resource/public/framework/remote-permission.js"></script>
+    <script src="../../resource/public/framework/remote-retriver.js"></script>
+    <script src="../../resource/public/framework/remote-create.js"></script>
+    <script src="../../resource/public/framework/remote-deleter.js"></script>
+    <script src="../../resource/public/framework/remote-update.js"></script>
+    <script src="../../resource/public/framework/baseRequest.js"></script>
+    <script src="../../resource/public/framework/table.js"></script>
+</head>
+<body>
+
+登录测试页面<br/>
+<button onclick="loginPage()">登录页面</button><br><br>
+
+登录按钮&nbsp;<br/>
+<button onclick="login()">登入</button>&nbsp;&nbsp;&nbsp;&nbsp;
+<button onclick="logout()">登出</button><br/><br/>
+
+带参数进行查询&nbsp;<br/>
+<button onclick="queryUserNo()">查询用户数据</button><br/><br/>
+
+通过调用Repository进行增删改查:<br/>
+<button onclick="rCreate()">增加一条数据</button>&nbsp;&nbsp;
+<button onclick="rUpdate()">更新一条数据</button>&nbsp;&nbsp;&nbsp;
+<button onclick="rDelete()">删除一条数据</button>&nbsp;&nbsp;&nbsp;<br/><br/>
+<button onclick="rQueryAll()">查询所有数据</button><br/><br/>
+
+通过调用Service进行增删改查:<br/>
+<button onclick="sCreate()">增加一条数据</button>&nbsp;&nbsp;&nbsp;
+<button onclick="sUpdate()">更新一条数据</button>&nbsp;&nbsp;&nbsp;
+<button onclick="sDelete()">删除一条数据</button><br/><br/>
+<button onclick="sQueryAll()">查询所有数据</button><br/>
+
+</body>
+</html>

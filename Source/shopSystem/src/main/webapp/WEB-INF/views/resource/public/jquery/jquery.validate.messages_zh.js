@@ -2,7 +2,7 @@
 	if ( typeof define === "function" && define.amd ) {
 		define( ["jquery", "../jquery.validate"], factory );
 	} else if (typeof module === "object" && module.exports) {
-		module.exports = factory( require( "jquery" ) );
+		module.exports = factory( require( "jquery-1.8.0.min" ) );
 	} else {
 		factory( jQuery );
 	}

@@ -18,6 +18,10 @@ import javax.persistence.TemporalType;
 @Table(name = "T_DICT")
 public class TDict implements java.io.Serializable {
 
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
 	private BigDecimal id;
 	private String dictObject;
 	private String dictName;

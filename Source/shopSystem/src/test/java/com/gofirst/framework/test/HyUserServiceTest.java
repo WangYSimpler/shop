@@ -1,6 +1,5 @@
 package com.gofirst.framework.test;
 
-import java.util.Date;
 
 import javax.inject.Inject;
 
@@ -11,8 +10,6 @@ import org.springframework.test.context.ContextConfiguration;
 import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 import org.springframework.test.context.web.WebAppConfiguration;
 
-import com.gofirst.framework.bean.TUser;
-import com.gofirst.framework.dao.TUserRepository;
 import com.gofirst.framework.service.TUserService;
 
 

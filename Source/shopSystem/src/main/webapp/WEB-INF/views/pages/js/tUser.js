@@ -105,7 +105,7 @@ $(function() {
     if (isAdd) {
 		rCreate(user);
 	}else{
-		rUpdate(user);
+		rUpdate();
 	}
   }
 
@@ -126,10 +126,25 @@ $(function() {
      });
  }
   
-  function rUpdate(user){
-	  
-	var id = parseInt(user.id);
-	var todo = user;
+  
+  function rUpdate(){
+	    var id = 61;
+	    var todo =  {"delFlag":"1","id":61,"password":"111111","userName":"Test321","userNo":"6"};
+	    remoteUpdate.update("TUserRepository", id, todo, false, function(errCode, errMsg, resultData){
+	        if(errCode == 0){
+	            alert("更新成功！");
+	        }
+	        else{
+	            alert("更新失败！" + errMsg);
+	        }
+	    });
+	}
+  
+  /**/
+  /*function rUpdate(user){
+	var todo = {"delFlag":"1","id":61,"password":"111111","userName":"苏州测试","userNo":"6"};
+	var id = 61;
+	//var todo = user;
 	remoteUpdate.update("TUserRepository", id, todo, false, function(errCode, errMsg, resultData){
 	    if(errCode == 0){
 	        alert("更新成功！");
@@ -142,7 +157,7 @@ $(function() {
 	        alert("更新失败！" + errMsg);
 	    }
 	});
-  }
+  }*/
   /**
    * 删除
    */
