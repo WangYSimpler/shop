@@ -7,15 +7,14 @@
 	<link rel="stylesheet" type="text/css" href="http://www.jeasyui.com/easyui/themes/icon.css">
 	<link rel="stylesheet" type="text/css" href="http://www.jeasyui.com/easyui/themes/color.css">
 	<link rel="stylesheet" type="text/css" href="http://www.jeasyui.com/easyui/demo/demo.css">
-    <script type="text/javascript" src="../../resource/public/jquery/jquery-1.8.0.min.js"></script>
+    <script type="text/javascript" src="../../resource/public/jquery/jquery-3.2.1.min.js"></script>
 	<script type="text/javascript" src="http://www.jeasyui.com/easyui/jquery.easyui.min.js"></script>
 </head>
 <body>
-	<h2>Basic CRUD Application</h2>
-	<p>Click the buttons on datagrid toolbar to do crud actions.</p>
+	<h1>Basic CRUD Application</h1>
 	
-	<table id="dg" title="My Users" class="easyui-datagrid" style="width:700px;height:250px"
-			toolbar="#toolbar" pagination="true" rownumbers="true" fitColumns="true" singleSelect="true">
+	<table id="dg" title="My Users" class="easyui-datagrid" style="width:700px;height:250px" 
+		toolbar="#toolbar" pagination="true" rownumbers="true" fitColumns="true" singleSelect="true">
 		<thead>
 			<tr>
 				<th field="firstname" width="50">First Name</th>
@@ -25,14 +24,15 @@
 			</tr>
 		</thead>
 	</table>
+	
+	
 	<div id="toolbar">
 		<a href="javascript:void(0)" class="easyui-linkbutton" iconCls="icon-add" plain="true" onclick="newUser()">New User</a>
 		<a href="javascript:void(0)" class="easyui-linkbutton" iconCls="icon-edit" plain="true" onclick="editUser()">Edit User</a>
 		<a href="javascript:void(0)" class="easyui-linkbutton" iconCls="icon-remove" plain="true" onclick="destroyUser()">Remove User</a>
 	</div>
 	
-	<div id="dlg" class="easyui-dialog" style="width:400px;height:280px;padding:10px 20px"
-			closed="true" buttons="#dlg-buttons">
+	<div id="dlg" class="easyui-dialog" style="width:400px;height:280px;padding:10px 20px" closed="true" buttons="#dlg-buttons">
 		<div class="ftitle">User Information</div>
 		<form id="fm" method="post" novalidate>
 			<div class="fitem">
@@ -58,6 +58,11 @@
 		<a href="javascript:void(0)" class="easyui-linkbutton" iconCls="icon-cancel" onclick="javascript:$('#dlg').dialog('close')" style="width:90px">Cancel</a>
 	</div>
 	<script type="text/javascript">
+
+
+	var jsonstr = '{"total":1,"rows":[{"id":"M000005","firstname":"检测设备","sortid":3,"valid":"1","handler":"系统管理员"}]}';  
+	var data = $.parseJSON(jsonstr);    
+	$('#dg').datagrid('loadData', data); //将数据绑定到datagrid   
 		var url;
 		function newUser(){
 			$('#dlg').dialog('open').dialog('setTitle','New User');
