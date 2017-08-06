@@ -1,93 +1,326 @@
 <!DOCTYPE html>
-<html lang="en">
+<html>
 <head>
-  <title>用户管理</title>
-  <meta charset="utf-8">
-  <!-- build:css css/index.min.css -->
-  <!-- <link rel="stylesheet" href="../../resource/public/dataTable-1.1/css/normalize.css">
-  <link rel="stylesheet" href="../../resource/public/dataTable-1.1/css/bs-grid.css">
-  <link rel="stylesheet" href="../../resource/public/dataTable-1.1/css/bs-tables.css">
-  <link rel="stylesheet" href="../../resource/public/dataTable-1.1/css/bs-forms.css">
-  <link rel="stylesheet" href="../../resource/public/dataTable-1.1/css/bs-buttons.css">
-  <link rel="stylesheet" href="../../resource/public/dataTable-1.1/css/bs-modal.css">
-  <link rel="stylesheet" href="../../resource/public/dataTable-1.1/css/utilities.css">
-  <link rel="stylesheet" href="../../resource/public/dataTable-1.1/css/ui-loader.css">
-  <link rel="stylesheet" href="../../resource/public/dataTable-1.1/css/ui-toast.css">
-  <link rel="stylesheet" href="../../resource/public/dataTable-1.1/css/ui-toast.css"> -->
-  <!-- endbuild -->
+    <meta charset="UTF-8">
+    <title>Basic CRUD Demo</title>
+    <link rel="stylesheet" type="text/css" href="http://www.jeasyui.com/easyui/themes/default/easyui.css">
+    <link rel="stylesheet" type="text/css" href="http://www.jeasyui.com/easyui/themes/icon.css">
+    <link rel="stylesheet" type="text/css" href="http://www.jeasyui.com/easyui/demo/demo.css">
+    <script type="text/javascript" src="../../resource/public/config/config.js"></script>
+	<script type="text/javascript" src="../../resource/public/framework/remote-permission.js"></script>
+	<script type="text/javascript" src="../../resource/public/framework/remote-retriver.js"></script>
+	<script type="text/javascript" src="../../resource/public/framework/remote-create.js"></script>
+	<script type="text/javascript" src="../../resource/public/framework/remote-update.js"></script>
+	<script type="text/javascript" src="../../resource/public/framework/remote-deleter.js"></script>
+	<script type="text/javascript" src="../../resource/public/framework/baseRequest.js"></script>
+    <script type="text/javascript" src="../../resource/public/jquery/jquery-1.8.0.min.js"></script>
+    <script type="text/javascript" src="http://www.jeasyui.com/easyui/jquery.easyui.min.js"></script>
 </head>
+
 <body>
+<h2>Basic CRUD Application</h2>
+<div class="demo-info" style="margin-bottom:10px">
+    <div class="demo-tip icon-tip">&nbsp;</div>
+</div>
 
-  <div class="container">
-    <h3 class="pull-left">用户列表</h3>
-    <div class="pt10">
-      <button class="btn btn-primary add-btn pull-right ml20">新增</button>
-      <form class="form-inline pull-right" id="searchForm">
-        <input type="search" class="form-control" id="keyName" placeholder="请输入姓名"/>
-        <button type="submit" class="btn btn-primary ml10">搜索</button>
-      </form>
-    </div>
-    <table class="table table-bordered table-condensed" id="userTbl">
-      <thead>
-        <tr>
-          <th width="10%">账号</th>
-          <th width="20%">名称</th>
-          <th width="20%">密码</th>
-          <th width="20%">备注</th>
-          <th width="30%">操作</th>
-        </tr>
-      </thead>
-      <tbody>
-         <script type="text/html" id="usersTmp">
-			{{if users.length > 0}}
-			{{each users as user}}
-        	<tr>
-          		<td>{{user.userNo}}</td>
-          		<td align="center">{{user.userName}}</td>
-          		<td align="center">{{user.password}}</td>
- 		  		<td align="left">{{user.remark}}</td>
-          		<td align="center">
-            	<button class="btn btn-sm btn-primary edit-btn" >修改</button> &nbsp;&nbsp;&nbsp;
-            	<button class="btn btn-sm btn-default delete-btn" style="color:red;">删除</button>
-         		</td>
-        		</tr>
-        		{{/each}}
-        		{{else}}
-        	<tr>
-          	<td colspan="4">暂无数据</td>
-       		</tr>
-        	{{/if}}
-        </script>
-      </tbody>
-    </table>
-    <!-- 用于分页条显示 -->
-    <div id="paginationWrapper" class="text-center"></div>
-  </div>
+<!--展示 20170805 -->
+<table id="dg" title="My Users" class="easyui-datagrid" style="width:900px;height:600px"
+       toolbar="#toolbar" pagination="true"
+       rownumbers="true" fitColumns="true" singleSelect="true">
+    <thead>
+    <tr>
+    	<td field="id" width="50" style="display: none;"></td>
+		<th field="userNo" width="50">账号</th>
+		<th field='userName' width="50">名称</th>
+		<th field="password" width="50">密码</th>
+        <th field="remark" width="50">备注</th>
+    </tr>
+    </thead>
+</table>
 
-  <!--  -->
-  <form class="modal fade" id="userModal" tabindex="-1"  role="dialog" aria-labelledby="userModalLabel" aria-hidden="true">
-    <div class="modal-dialog">
-      <div class="modal-content"></div>
-    </div>
-  </form>
+<!-- 修改操作   -->
+<div id="toolbar">
+    <a href="javascript:void(0)" class="easyui-linkbutton" iconCls="icon-add"    plain="true" onclick="newUser()">New User</a>
+    <a href="javascript:void(0)" class="easyui-linkbutton" iconCls="icon-edit"   plain="true" onclick="editUser()">Edit User</a>
+    <a href="javascript:void(0)" class="easyui-linkbutton" iconCls="icon-remove" plain="true" onclick="removeUser()">Remove User</a>
+</div>
 
-  <!-- build:js js/index.min.js -->
-  <script type="text/javascript" src="../../resource/public/config/config.js"></script>
-  <script type="text/javascript" src="../../resource/public/framework/remote-permission.js"></script>
-  <script type="text/javascript" src="../../resource/public/framework/remote-retriver.js"></script>
-  <script type="text/javascript" src="../../resource/public/framework/remote-create.js"></script>
-  <script type="text/javascript" src="../../resource/public/framework/remote-update.js"></script>
-  <script type="text/javascript" src="../../resource/public/framework/baseRequest.js"></script>
-  <script src="../../resource/public/jquery/jquery-3.2.1.min.js"></script>
-  <script src="../../resource/public/jquery/jquery.validate.js"></script>
-  <script src="../../resource/public/jquery/jquery.validate.messages_zh.js"></script>
-  <script src="../../resource/public/dataTable-1.1/js/template.js"></script>
-  <script src="../../resource/public/dataTable-1.1/js/bs-modal.js"></script>
-  <script src="../../resource/public/dataTable-1.1/js/bm-confirm.js"></script>
-  <script src="../../resource/public/dataTable-1.1/js/ui-loader.js"></script>
-  <script src="../../resource/public/dataTable-1.1/js/ui-toast.js"></script>
-  <script src="../js/common.js"></script>
-  <script src="../js/tUser.js"></script>
-  <!-- endbuild -->
+<!-- 弹窗 王勇20170805 -->
+<div id="dlg" class="easyui-dialog" style="width:400px;height:280px;padding:10px 20px"
+     closed="true" buttons="#dlg-buttons">
+    <div class="ftitle">User Information</div>
+    <form id="fm" method="post" novalidate>
+   
+    	<div class="fitem"  style="display: none;">
+            <label>编号:</label>
+            <input name="id" class="easyui-validatebox" required="true">
+        </div>
+    
+        <div class="fitem">
+            <label>用户账号:</label>
+            <input name="userNo" class="easyui-validatebox" required="true">
+        </div>
+        <div class="fitem">
+            <label>用户名称</label>
+            <input name="userName" class="easyui-validatebox" required="true">
+        </div>
+        <div class="fitem">
+            <label>密码:</label>
+            <input name="password" class="easyui-validatebox" >
+        </div>
+        <div class="fitem">
+            <label>备注:</label>
+            <input name="remark" class="easyui-validatebox" >
+        </div>
+        
+        <div class="fitem"  style="display: none;">
+            <label>删除:</label>
+            <input name="delFlag" class="easyui-validatebox" >
+        </div>
+    </form>
+</div>
+
+<div id="dlg-buttons">
+    <a href="javascript:void(0)" class="easyui-linkbutton" iconCls="icon-ok" onclick="saveUser()">Save</a>
+    <a href="javascript:void(0)" class="easyui-linkbutton" iconCls="icon-cancel" onclick="javascript:$('#dlg').dialog('close')">Cancel</a>
+</div>
+
+<script type="text/javascript">
+  
+	$(function() {
+		init();
+	});
+
+	function init() {
+		remoteRetriver.resetSortFileds();
+		var sortParams = remoteRetriver.addSortFiled('id',remoteRetriver.SORT_TYPE_ASC);
+		
+		//查询第一页
+		remoteRetriver.query('TUserRepository', 'findAll', '', sortParams, 0,10, false, function(errCode, errMsg, resultData, totalCount,pageCount) {
+
+					if (errCode == 0) {
+						var datas = JSON.parse(resultData);
+						$('#dg').datagrid('loadData', {
+							"total" : totalCount,
+							"rows" : datas
+						});
+					} else {
+						alert('查询失败!!!' + errMsg);
+					}
+				});
+	}
+
+	$.fn.serializeObject = function() {
+		var o = {};
+		var a = this.serializeArray();
+		$.each(a, function() {
+			if (o[this.name]) {
+				if (!o[this.name].push) {
+					o[this.name] = [ o[this.name] ];
+				}
+				o[this.name].push(this.value || '');
+			} else {
+				o[this.name] = this.value || '';
+			}
+		});
+		return o;
+	};
+
+	function showModelWindow() {
+		$('#dlg').dialog('open').dialog('setTitle', 'New User');
+		$('#fm').form('clear');
+	};
+
+	function closeModelWindow() {
+		$('#dlg').dialog('close'); // close the dialog
+		init();
+	}
+
+	function newUser() {
+		showModelWindow();
+
+	};
+
+	function saveUser() {
+
+		var obj = $('#fm').serializeObject();
+		//进入保存文件
+		if(obj.id == ''){
+			obj.delFlag = '0';
+			rCreate(obj);
+		}else{
+			var tableId = obj.id;
+			rUpdate(obj,tableId);
+		}
+		
+		/*  $('#fm').form('submit',{
+		     url: url,
+		     onSubmit: function(){
+		         return $(this).form('validate');
+		     },
+		     success: function(result){
+		         var result = eval('('+result+')');
+		         if (result.success==false){
+		             $.messager.show({
+		                 title: 'Error',
+		                 msg: result.msg
+		             });
+		         } else {
+		             $('#dlg').dialog('close');        // close the dialog
+		             $('#dg').datagrid('reload');    // reload the user data
+		             $.messager.show({
+		                 title: 'Success',
+		                 msg:result.msg
+		             });
+		         }
+		     }
+		 }); */
+	}
+
+	function rCreate(user) {
+
+		var todo = user;
+		remoteCreate.create("TUserRepository", todo, true, function(errCode,
+				errMsg, resultData) {
+			if (errCode == 0) {
+				alert("新建成功！");
+				closeModelWindow();
+			} else {
+				alert("新建失败！" + errMsg);
+			}
+		});
+	}
+
+	function editUser() {
+		var row = $('#dg').datagrid('getSelected');
+		if (row) {
+			$('#dlg').dialog('open').dialog('setTitle', 'Edit User');
+			$('#fm').form('load', row);
+		}
+	};
+
+	function rUpdate(updateObj, tableId) {
+		var id = tableId;
+		var todo = updateObj;
+		remoteUpdate.update("TUserRepository", id, todo, false, function(errCode, errMsg, resultData) {
+			if (errCode == 0) {
+				alert("更新成功！");
+				closeModelWindow();
+			} else {
+				alert("更新失败！" + errMsg);
+			}
+		});
+	}
+
+	function removeUser() {
+		var row = $('#dg').datagrid('getSelected');
+		if (row) {
+			 var msg = "您真的确定要删除吗？\n\n请确认！"; 
+			  if (confirm(msg)==true){ 
+				  var tableId = row.id;
+					remoteDeleter.deleter("TUserRepository", tableId, false, function(errCode, errMsg, resultData) {
+						if (errCode == 0) {
+							alert("删除成功！" + errMsg);
+							closeModelWindow();
+						} else {
+							alert("删除失败！" + errMsg);
+						} });
+			  }else{ 
+			    return false; 
+			  } 
+		}
+	}
+
+	$(function() {
+		$('#fm input').each(function() {
+			if ($(this).attr('required') || $(this).attr('validType'))
+				$(this).validatebox();
+		})
+	});
+	$.extend($.fn.validatebox.defaults.rules, {
+		CHS : {
+			validator : function(value, param) {
+				return /^[\u0391-\uFFE5]+$/.test(value);
+			},
+			message : '请输入汉字'
+		},
+		ZIP : {
+			validator : function(value, param) {
+				return /^[1-9]\d{5}$/.test(value);
+			},
+			message : '邮政编码不存在'
+		},
+		QQ : {
+			validator : function(value, param) {
+				return /^[1-9]\d{4,10}$/.test(value);
+			},
+			message : 'QQ号码不正确'
+		},
+		mobile : {
+			validator : function(value, param) {
+				return /^((\(\d{2,3}\))|(\d{3}\-))?13\d{9}$/.test(value);
+			},
+			message : '手机号码不正确'
+		},
+		loginName : {
+			validator : function(value, param) {
+				return /^[\u0391-\uFFE5\w]+$/.test(value);
+			},
+			message : '登录名称只允许汉字、英文字母、数字及下划线。'
+		},
+		safepass : {
+			validator : function(value, param) {
+				return safePassword(value);
+			},
+			message : '密码由字母和数字组成，至少6位'
+		},
+		equalTo : {
+			validator : function(value, param) {
+				return value == $(param[0]).val();
+			},
+			message : '两次输入的字符不一至'
+		},
+		number : {
+			validator : function(value, param) {
+				return /^\d+$/.test(value);
+			},
+			message : '请输入数字'
+		},
+		integer : {// 验证整数
+			validator : function(value) {
+				return /^[+]?[1-9]+\d*$/i.test(value);
+			},
+			message : '请输入整数'
+		},
+		idcard : {
+			validator : function(value, param) {
+				return idCard(value);
+			},
+			message : '请输入正确的身份证号码'
+		}
+	});
+</script>
+
+	<style type="text/css">
+	    #fm{
+	        margin:0;
+	        padding:10px 30px;
+	    }
+	    .ftitle{
+	        font-size:14px;
+	        font-weight:bold;
+	        padding:5px 0;
+	        margin-bottom:10px;
+	        border-bottom:1px solid #ccc;
+	    }
+	    .fitem{
+	        margin-bottom:5px;
+	    }
+	    .fitem label{
+	        display:inline-block;
+	        width:80px;
+	    }
+	</style>
+
 </body>
 </html>
