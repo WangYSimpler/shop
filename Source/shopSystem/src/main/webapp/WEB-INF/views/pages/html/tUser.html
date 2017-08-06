@@ -3,9 +3,12 @@
 <head>
     <meta charset="UTF-8">
     <title>Basic CRUD Demo</title>
+    <!-- css start  -->
     <link rel="stylesheet" type="text/css" href="http://www.jeasyui.com/easyui/themes/default/easyui.css">
     <link rel="stylesheet" type="text/css" href="http://www.jeasyui.com/easyui/themes/icon.css">
     <link rel="stylesheet" type="text/css" href="http://www.jeasyui.com/easyui/demo/demo.css">
+    <link rel="stylesheet" type="text/css" href="../../resource/public/easyui/css/tableUI.css">
+    <!-- js start -->
     <script type="text/javascript" src="../../resource/public/config/config.js"></script>
 	<script type="text/javascript" src="../../resource/public/framework/remote-permission.js"></script>
 	<script type="text/javascript" src="../../resource/public/framework/remote-retriver.js"></script>
@@ -14,22 +17,25 @@
 	<script type="text/javascript" src="../../resource/public/framework/remote-deleter.js"></script>
 	<script type="text/javascript" src="../../resource/public/framework/baseRequest.js"></script>
     <script type="text/javascript" src="../../resource/public/jquery/jquery-1.8.0.min.js"></script>
-    <script type="text/javascript" src="http://www.jeasyui.com/easyui/jquery.easyui.min.js"></script>
+    <script type="text/javascript" src="../../resource/public/easyui/js/jquery.easyui.min.js"></script>
+    <script type="text/javascript" src="../../resource/public/utils/form2Json.js"></script>
+   <!-- 对应表 -->
+    <script type="text/javascript" src="../js/tUser.js"></script>
 </head>
 
 <body>
 <h2>Basic CRUD Application</h2>
+
 <div class="demo-info" style="margin-bottom:10px">
     <div class="demo-tip icon-tip">&nbsp;</div>
 </div>
 
 <!--展示 20170805 -->
-<table id="dg" title="My Users" class="easyui-datagrid" style="width:900px;height:600px"
-       toolbar="#toolbar" pagination="true"
-       rownumbers="true" fitColumns="true" singleSelect="true">
+<table id="dg" title="数据展示" class="easyui-datagrid" style="width:900px;height:364px"
+       toolbar="#toolbar" pagination="true" rownumbers="true" fitColumns="true" singleSelect="true">
     <thead>
     <tr>
-    	<td field="id" width="50" style="display: none;"></td>
+    	<td field="id" width="50" style="display:none;"></td>
 		<th field="userNo" width="50">账号</th>
 		<th field='userName' width="50">名称</th>
 		<th field="password" width="50">密码</th>
@@ -55,7 +61,6 @@
             <label>编号:</label>
             <input name="id" class="easyui-validatebox" required="true">
         </div>
-    
         <div class="fitem">
             <label>用户账号:</label>
             <input name="userNo" class="easyui-validatebox" required="true">
@@ -91,146 +96,8 @@
 		init();
 	});
 
-	function init() {
-		remoteRetriver.resetSortFileds();
-		var sortParams = remoteRetriver.addSortFiled('id',remoteRetriver.SORT_TYPE_ASC);
-		
-		//查询第一页
-		remoteRetriver.query('TUserRepository', 'findAll', '', sortParams, 0,10, false, function(errCode, errMsg, resultData, totalCount,pageCount) {
-
-					if (errCode == 0) {
-						var datas = JSON.parse(resultData);
-						$('#dg').datagrid('loadData', {
-							"total" : totalCount,
-							"rows" : datas
-						});
-					} else {
-						alert('查询失败!!!' + errMsg);
-					}
-				});
-	}
-
-	$.fn.serializeObject = function() {
-		var o = {};
-		var a = this.serializeArray();
-		$.each(a, function() {
-			if (o[this.name]) {
-				if (!o[this.name].push) {
-					o[this.name] = [ o[this.name] ];
-				}
-				o[this.name].push(this.value || '');
-			} else {
-				o[this.name] = this.value || '';
-			}
-		});
-		return o;
-	};
-
-	function showModelWindow() {
-		$('#dlg').dialog('open').dialog('setTitle', 'New User');
-		$('#fm').form('clear');
-	};
-
-	function closeModelWindow() {
-		$('#dlg').dialog('close'); // close the dialog
-		init();
-	}
-
-	function newUser() {
-		showModelWindow();
-
-	};
-
-	function saveUser() {
-
-		var obj = $('#fm').serializeObject();
-		//进入保存文件
-		if(obj.id == ''){
-			obj.delFlag = '0';
-			rCreate(obj);
-		}else{
-			var tableId = obj.id;
-			rUpdate(obj,tableId);
-		}
-		
-		/*  $('#fm').form('submit',{
-		     url: url,
-		     onSubmit: function(){
-		         return $(this).form('validate');
-		     },
-		     success: function(result){
-		         var result = eval('('+result+')');
-		         if (result.success==false){
-		             $.messager.show({
-		                 title: 'Error',
-		                 msg: result.msg
-		             });
-		         } else {
-		             $('#dlg').dialog('close');        // close the dialog
-		             $('#dg').datagrid('reload');    // reload the user data
-		             $.messager.show({
-		                 title: 'Success',
-		                 msg:result.msg
-		             });
-		         }
-		     }
-		 }); */
-	}
-
-	function rCreate(user) {
-
-		var todo = user;
-		remoteCreate.create("TUserRepository", todo, true, function(errCode,
-				errMsg, resultData) {
-			if (errCode == 0) {
-				alert("新建成功！");
-				closeModelWindow();
-			} else {
-				alert("新建失败！" + errMsg);
-			}
-		});
-	}
-
-	function editUser() {
-		var row = $('#dg').datagrid('getSelected');
-		if (row) {
-			$('#dlg').dialog('open').dialog('setTitle', 'Edit User');
-			$('#fm').form('load', row);
-		}
-	};
-
-	function rUpdate(updateObj, tableId) {
-		var id = tableId;
-		var todo = updateObj;
-		remoteUpdate.update("TUserRepository", id, todo, false, function(errCode, errMsg, resultData) {
-			if (errCode == 0) {
-				alert("更新成功！");
-				closeModelWindow();
-			} else {
-				alert("更新失败！" + errMsg);
-			}
-		});
-	}
-
-	function removeUser() {
-		var row = $('#dg').datagrid('getSelected');
-		if (row) {
-			 var msg = "您真的确定要删除吗？\n\n请确认！"; 
-			  if (confirm(msg)==true){ 
-				  var tableId = row.id;
-					remoteDeleter.deleter("TUserRepository", tableId, false, function(errCode, errMsg, resultData) {
-						if (errCode == 0) {
-							alert("删除成功！" + errMsg);
-							closeModelWindow();
-						} else {
-							alert("删除失败！" + errMsg);
-						} });
-			  }else{ 
-			    return false; 
-			  } 
-		}
-	}
-
+	
+	
 	$(function() {
 		$('#fm input').each(function() {
 			if ($(this).attr('required') || $(this).attr('validType'))
@@ -300,27 +167,6 @@
 		}
 	});
 </script>
-
-	<style type="text/css">
-	    #fm{
-	        margin:0;
-	        padding:10px 30px;
-	    }
-	    .ftitle{
-	        font-size:14px;
-	        font-weight:bold;
-	        padding:5px 0;
-	        margin-bottom:10px;
-	        border-bottom:1px solid #ccc;
-	    }
-	    .fitem{
-	        margin-bottom:5px;
-	    }
-	    .fitem label{
-	        display:inline-block;
-	        width:80px;
-	    }
-	</style>
 
 </body>
 </html>

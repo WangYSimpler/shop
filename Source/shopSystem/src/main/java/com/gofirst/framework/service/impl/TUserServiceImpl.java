@@ -38,7 +38,7 @@ public class TUserServiceImpl implements TUserService {
 	 */
 	@Override
 	public boolean isAuthenticatedUser(String loginId, String pwd, String type) {
-		TUser user= userRepository.findByuserNo(loginId);
+		TUser user= userRepository.findByUserNo(loginId);
 		
 		if (!pwd.equals(user.getPassword())) {
 			return false;
@@ -49,7 +49,7 @@ public class TUserServiceImpl implements TUserService {
 	}
 	@Override
 	public boolean isAuthenticatedUser(String loginId, String pwd) {
-		TUser user = userRepository.findByuserNo(loginId);
+		TUser user = userRepository.findByUserNo(loginId);
 		if(user == null) logger.info("can not find user" + loginId);
 		logger.info(user.getUserName());
 		logger.info(user.getPassword());

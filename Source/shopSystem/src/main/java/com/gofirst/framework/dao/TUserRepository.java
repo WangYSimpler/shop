@@ -17,7 +17,7 @@ import com.gofirst.framework.customRepository.FrameworkRepository;
 @Gateway
 public interface TUserRepository  extends CrudRepository<TUser, Long>,FrameworkRepository<TUser, Long>{
 
-	public TUser findByuserNo(String userNo);
+	public TUser findByUserNo(String userNo);
 	//public User findByUserNo(String userNo);
 	
 	public Iterable<TUser> findAll(Pageable pageable);
