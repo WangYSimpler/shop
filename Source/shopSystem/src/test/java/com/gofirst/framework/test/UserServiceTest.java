@@ -12,13 +12,16 @@ import org.springframework.test.context.web.WebAppConfiguration;
 
 import com.gofirst.framework.bean.TOrder;
 import com.gofirst.framework.dao.TOrderRepository;
+import com.gofirst.framework.service.TUserService;
+
+import junit.framework.Assert;
 
 @RunWith(SpringJUnit4ClassRunner.class)
 @ContextConfiguration(classes = { SpringApplication.class})
 @WebAppConfiguration
 public class UserServiceTest {
 	
-	/*@Inject
+	@Inject
 	private TUserService usersService;
 	
 	@Test
@@ -27,9 +30,9 @@ public class UserServiceTest {
 		
 		
 		Assert.assertEquals(true, actual);
-	}*/
+	}
 	
-	@Inject
+	/*@Inject
 	private TOrderRepository tOrderRepository;
 	
 	@Test
@@ -38,7 +41,7 @@ public class UserServiceTest {
 		
 		System.out.println(lorder.size());
 		
-	}
+	}*/
 	
 
 }
