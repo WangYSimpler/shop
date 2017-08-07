@@ -1,4 +1,4 @@
-var gofirstConfig = {
+/*var gofirstConfig = {
     domain: 'http://localhost:9911',
     project: 'shopSystem',
     timeout: 40000,
@@ -10,13 +10,13 @@ var gofirstConfig = {
             alert('自定义未处理错误处理：' + msg);
         }
     }
-};
+};*/
 
 /**
  *  部署地址
  */
-/*var gofirstConfig = {
-	    domain: 'http://192.168.1.202:9999',
+var gofirstConfig = {
+	    domain: 'http://222.92.23.166:9999',
 	    project: 'shopSystem',
 	    timeout: 40000,
 	    errorHandlers: {
@@ -27,4 +27,4 @@ var gofirstConfig = {
 	            alert('自定义未处理错误处理：' + msg);
 	        }
 	    }
-	};*/
+	};
