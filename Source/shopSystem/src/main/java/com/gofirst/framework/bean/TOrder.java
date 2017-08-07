@@ -50,9 +50,11 @@ public class TOrder implements java.io.Serializable {
 	private String expressNo;
 	@Column(name = "EXPRESS_FEE", precision = 20, scale = 4)
 	private BigDecimal expressFee;
+	
 	@JSONField(format="yyyy/MM/dd")
   	@Temporal(TemporalType.DATE)
 	@Column(name = "BUY_DATE", length = 7)
+	
 	private Date buyDate;
 	private String buyAddress;
 	@Column(name = "REMARK", length = 2000)
