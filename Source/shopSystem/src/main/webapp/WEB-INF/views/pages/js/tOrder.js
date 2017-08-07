@@ -1,6 +1,7 @@
 ///配置信息
 var respositoryName = 'TOrderRepository';
 var idName          = 'id';
+var tableName       = 'Order';
 
 function init() {
 		remoteRetriver.resetSortFileds();
@@ -22,7 +23,7 @@ function init() {
 	};
 	
 	function showModelWindow() {
-		$('#dlg').dialog('open').dialog('setTitle', 'New User');
+		$('#dlg').dialog('open').dialog('setTitle', 'New ' + tableName);
 		$('#fm').form('clear');
 	};
 
@@ -31,12 +32,12 @@ function init() {
 		init();
 	}
 
-	function newUser() {
+	function newObj() {
 		showModelWindow();
 
 	};
 
-	function saveUser() {
+	function saveObj() {
 
 		var obj = $('#fm').serializeObject();
 		//进入保存文件
@@ -63,10 +64,10 @@ function init() {
 		});
 	};
 
-	function editUser() {
+	function editObj() {
 		var row = $('#dg').datagrid('getSelected');
 		if (row) {
-			$('#dlg').dialog('open').dialog('setTitle', 'Edit User');
+			$('#dlg').dialog('open').dialog('setTitle', 'Edit ' + tableName);
 			$('#fm').form('load', row);
 		}
 	};
@@ -84,13 +85,13 @@ function init() {
 		});
 	}
 
-	function removeUser() {
+	function removeObj() {
 		var row = $('#dg').datagrid('getSelected');
 		if (row) {
 			 var msg = "您真的确定要删除吗？  \n请确认！"; 
 			  if (confirm(msg)==true){ 
 				  var tableId = row[idName];
-					remoteDeleter.deleter("TUserRepository", tableId, false, function(errCode, errMsg, resultData) {
+					remoteDeleter.deleter(respositoryName, tableId, false, function(errCode, errMsg, resultData) {
 						if (errCode == 0) {
 							//alert("删除成功！" + errMsg);
 							closeModelWindow();
