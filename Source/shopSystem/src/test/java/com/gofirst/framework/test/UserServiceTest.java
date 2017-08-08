@@ -1,20 +1,17 @@
 package com.gofirst.framework.test;
 
-import java.util.List;
-
 import javax.inject.Inject;
 
+import org.junit.Assert;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.springframework.test.context.ContextConfiguration;
 import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 import org.springframework.test.context.web.WebAppConfiguration;
 
-import com.gofirst.framework.bean.TOrder;
-import com.gofirst.framework.dao.TOrderRepository;
+//import com.gofirst.framework.bean.TOrder;
+//import com.gofirst.framework.dao.TOrderRepository;
 import com.gofirst.framework.service.TUserService;
-
-import junit.framework.Assert;
 
 @RunWith(SpringJUnit4ClassRunner.class)
 @ContextConfiguration(classes = { SpringApplication.class})
@@ -26,7 +23,7 @@ public class UserServiceTest {
 	
 	@Test
 	public void testAuthenticate() {
-		boolean actual = usersService.isAuthenticatedUser("1", "1");
+		boolean actual = usersService.isAuthenticatedUser("1", "888888");
 		
 		
 		Assert.assertEquals(true, actual);
