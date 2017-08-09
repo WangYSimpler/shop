@@ -48,12 +48,12 @@ public class TOrder implements java.io.Serializable {
 	private String expressNo;
 	@Column(name = "EXPRESS_FEE", precision = 20, scale = 4)
 	private BigDecimal expressFee;
-	
+	//购买日期
 	@JSONField(format="yyyy/MM/dd")
   	@Temporal(TemporalType.DATE)
 	@Column(name = "BUY_DATE", length = 7)
-	
 	private Date buyDate;
+	@Column(name = "BUY_ADDRESS", length = 2000)
 	private String buyAddress;
 	@Column(name = "REMARK", length = 2000)
 	private String remark;
@@ -61,11 +61,15 @@ public class TOrder implements java.io.Serializable {
 	private String delFlag;
 	@Column(name = "CREATE_USER", length = 200)
 	private String createUser;
+	//日期
+	@JSONField(format="yyyy/MM/dd")
 	@Temporal(TemporalType.DATE)
 	@Column(name = "CREATE_DATE", length = 7)
 	private Date createDate;
 	@Column(name = "UPDATE_USER", length = 200)
 	private String updateUser;
+	//日期
+	@JSONField(format="yyyy/MM/dd")
 	@Temporal(TemporalType.DATE)
 	@Column(name = "UPDATE_DATE", length = 7)
 	private Date updateDate;

@@ -56,12 +56,6 @@ public class RepositoryCommonServiceImpl implements RepositoryCommonService {
 	private SystemConfigProperties sysConfig = null;
 
 	/**
-	 * gson
-	 */
-	//@Inject
-	//private Gson gson = null;
-
-	/**
 	 * java validator
 	 */
 	@Inject
