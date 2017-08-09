@@ -57,6 +57,7 @@ function init() {
 				errMsg, resultData) {
 			if (errCode == 0) {
 				alert("新建成功！");
+				alert(App.getCookie('loginNo'));
 				closeModelWindow();
 			} else {
 				alert("新建失败！" + errMsg);
