@@ -22,7 +22,7 @@
     <script type="text/javascript" src="../../resource/public/easyui/js/easyui-lang-zh_CN.js"></script>
     <script type="text/javascript" src="../../resource/public/utils/form2Json.js"></script>
     <!--  20170809 js-->
-     <script type="text/javascript" src="../js/common.js"></script>
+ 	<script type="text/javascript" src="../../resource/public/framework/commonCookie.js"></script>
    <!-- 对应表 -->
     <script type="text/javascript" src="../js/tOrder.js"></script>
 </head>
@@ -44,7 +44,6 @@
 		<th field='orderNo' width="50">订单编号</th>
 		<th field="orderName" width="50">订单名称</th>
 		<th field="orderObject" width="50">产品类型</th>
-		
 		<th field="orderPrice" width="50">产品单价</th>
 		<th field="orderNum" width="50">订单数量</th>
 		<th field="orderAmount" width="50">订单总额</th>
@@ -52,6 +51,11 @@
 		<th field="freeNum" width="50">赠送数量</th>
 		<th field="buyAddress" width="100">买家地址</th>
         <th field="remark" width="50">备注</th>
+        
+        <td field="createUser" width="50" style="display:none;"></td>
+        <td field="createDate" width="50" style="display:none;"></td>
+        <td field="updateUser" width="50" style="display:none;"></td>
+        <td field="updateDate" width="50" style="display:none;"></td>
     </tr>
     </thead>
 </table>
@@ -125,6 +129,15 @@
             <label>删除:</label>
             <input name="delFlag" class="easyui-validatebox" >
         </div>
+        <div class="fitem"  style="display: none;">
+            <label>createUser:</label>
+            <input name="createUser" class="easyui-validatebox" required="true">
+        </div>
+        <div class="fitem"  style="display: none;">
+            <label>createDate:</label>
+            <input name="createDate" class="easyui-validatebox" required="true">
+        </div>
+        
     </form>
 </div>
 

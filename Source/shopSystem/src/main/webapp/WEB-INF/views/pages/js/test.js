@@ -100,12 +100,11 @@ function rCreate(){
 
 function rUpdate(){
     var id = 61;
-    var todo =  {"delFlag":"1","id":61,"password":"111111","userName":"Array","userNo":"6"};
-    remoteUpdate.update("TUserRepository", id, todo, false, function(errCode, errMsg, resultData){
+    var todo =  {"delFlag":"1","id":1,"password":"111111","userName":"Array","userNo":"6"};
+    remoteUpdate.partUpdate("TUserRepository", id, todo, false, function(errCode, errMsg, resultData){
         if(errCode == 0){
             alert("更新成功！");
-        }
-        else{
+        }else{
             alert("更新失败！" + errMsg);
         }
     });

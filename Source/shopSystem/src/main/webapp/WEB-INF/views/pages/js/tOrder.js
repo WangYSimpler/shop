@@ -6,9 +6,11 @@ var tableName       = 'Order';
 function init() {
 		remoteRetriver.resetSortFileds();
 		var sortParams = remoteRetriver.addSortFiled(idName,remoteRetriver.SORT_TYPE_ASC);
+		var params=[];
+		params.push('0');
 		
 		//查询第一页
-		remoteRetriver.query(respositoryName, 'findAll', '', sortParams, 0,10, false, function(errCode, errMsg, resultData, totalCount,pageCount) {
+		remoteRetriver.query(respositoryName, 'findByDelFlag', params, sortParams, 0,10, false, function(errCode, errMsg, resultData, totalCount,pageCount) {
 
 					if (errCode == 0) {
 						var datas = JSON.parse(resultData);
@@ -23,7 +25,7 @@ function init() {
 	};
 	
 	function showModelWindow() {
-		$('#dlg').dialog('open').dialog('setTitle', 'New ' + tableName);
+		$('#dlg').dialog('open').dialog('setTitle', 'New' + tableName);
 		$('#fm').form('clear');
 	};
 
@@ -50,14 +52,27 @@ function init() {
 		}
 	};
 
+	//补充
+	function objComplete(obj,createFlag){
+		var completeObj = obj;
+		if (createFlag) {
+			completeObj.delFlag='0';
+			completeObj.createUser=getCookie("loginNo");
+			completeObj.createDate = new Date().toLocaleDateString();
+		}else {
+			completeObj.updateUser='1';
+			completeObj.updateDate = new Date().toLocaleDateString();
+		}
+		return completeObj;
+	}
+	
 	function rCreate(createObj) {
 
-		var todo = createObj;
-		remoteCreate.create(respositoryName, todo, true, function(errCode,
-				errMsg, resultData) {
+		var todo =  objComplete(createObj,true);
+		remoteCreate.create(respositoryName, todo, true, function(errCode,errMsg, resultData) {
 			if (errCode == 0) {
 				alert("新建成功！");
-				alert(App.getCookie('loginNo'));
+				//alert(App.getCookie('loginNo'));
 				closeModelWindow();
 			} else {
 				alert("新建失败！" + errMsg);
@@ -75,10 +90,9 @@ function init() {
 
 	function rUpdate(updateObj, tableId) {
 		var id = tableId;
-		var todo = updateObj;
+		var todo =  objComplete(updateObj,false);
 		remoteUpdate.update(respositoryName, id, todo, false, function(errCode, errMsg, resultData) {
 			if (errCode == 0) {
-				/* alert("更新成功！"); */
 				closeModelWindow();
 			} else {
 				alert("更新失败！" + errMsg);
@@ -87,14 +101,16 @@ function init() {
 	}
 
 	function removeObj() {
+		///物理删除代码
 		var row = $('#dg').datagrid('getSelected');
 		if (row) {
 			 var msg = "您真的确定要删除吗？  \n请确认！"; 
 			  if (confirm(msg)==true){ 
 				  var tableId = row[idName];
-					remoteDeleter.deleter(respositoryName, tableId, false, function(errCode, errMsg, resultData) {
+				  var todo = row;
+				  todo.delFlag='1';
+				  remoteDeleter.logicDeleter(respositoryName, tableId, todo, false, function(errCode, errMsg, resultData) {
 						if (errCode == 0) {
-							//alert("删除成功！" + errMsg);
 							closeModelWindow();
 						} else {
 							alert("删除失败！" + errMsg);
@@ -103,4 +119,21 @@ function init() {
 			    return false; 
 			  } 
 		}
+		
+		/* 
+		 * var row = $('#dg').datagrid('getSelected');
+		if (row) {
+			 var msg = "您真的确定要删除吗？  \n请确认！"; 
+			  if (confirm(msg)==true){ 
+				  var tableId = row[idName];
+					remoteDeleter.deleter(respositoryName, tableId, false, function(errCode, errMsg, resultData) {
+						if (errCode == 0) {
+							closeModelWindow();
+						} else {
+							alert("删除失败！" + errMsg);
+						} });
+			  }else{ 
+			    return false; 
+			  } 
+		}*/
 	}

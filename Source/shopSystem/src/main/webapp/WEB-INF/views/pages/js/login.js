@@ -9,6 +9,7 @@ function login() {
 	    if(errCode == 0){
 	    	///set cookie
 	    	//App.setCookie("loginNo",userNo,20);
+	    	setCookie("loginNo",userNo,1);
 	    	var fullUrl = gofirstConfig.domain + '/' + gofirstConfig.project +'/pages';
 	    	window.location.href=fullUrl+"/html/tOrder.html"; 
 	    	

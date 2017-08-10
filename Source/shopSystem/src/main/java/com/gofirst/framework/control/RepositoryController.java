@@ -150,8 +150,7 @@ public class RepositoryController {
 	 * @throws NoSuchFieldException
 	 */
 	@RequestMapping(value = "/repository/partUpdate/{repositoryName}/{id}", method = RequestMethod.POST, produces = FORMAT)
-	public void doPartUpdate(HttpServletRequest request, HttpServletResponse response,
-			@PathVariable String repositoryName, @PathVariable Object id)
+	public void doPartUpdate(HttpServletRequest request, HttpServletResponse response,@PathVariable String repositoryName, @PathVariable Object id)
 			throws BeansException, NoSuchMethodException, IllegalAccessException, IllegalArgumentException,	InvocationTargetException, PermissionException, NoSuchFieldException, SecurityException {
 		String params = request.getParameter(Constants.PARAMS);
 		String errorCode = (String) repoCommonService.commonOperator(PARTUPDATE, params, null, repositoryName, id);
@@ -176,8 +175,7 @@ public class RepositoryController {
 	 */
 	@RequestMapping(value = "/repository/{repositoryName}/{id}", method = RequestMethod.DELETE, produces = FORMAT)
 	public void doDelete(HttpServletResponse response, @PathVariable String repositoryName, @PathVariable Object id)
-			throws BeansException, NoSuchMethodException, IllegalAccessException, IllegalArgumentException,
-			InvocationTargetException, PermissionException, NoSuchFieldException, SecurityException {
+			throws BeansException, NoSuchMethodException, IllegalAccessException, IllegalArgumentException,InvocationTargetException, PermissionException, NoSuchFieldException, SecurityException {
 		String errorCode = (String) repoCommonService.commonOperator(DELETE, null, null, repositoryName, id);
 		// 根据服务返回值，设置返回头error_code信息
 		response.setHeader(ERROR_HEADER, errorCode);

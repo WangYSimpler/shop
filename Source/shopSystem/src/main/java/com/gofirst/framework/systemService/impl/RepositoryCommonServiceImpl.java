@@ -2,6 +2,7 @@ package com.gofirst.framework.systemService.impl;
 
 import static com.gofirst.framework.util.Constants.DELETE;
 import static com.gofirst.framework.util.Constants.PARTUPDATE;
+//import static com.gofirst.framework.util.Constants.UPDATE;
 import static com.gofirst.framework.util.Constants.SAVE;
 import static com.gofirst.framework.util.GlobalErrorCodeConstants.ERROR_CODE_ID;
 import static com.gofirst.framework.util.GlobalErrorCodeConstants.ERROR_CODE_PARAM_JSON;
@@ -149,20 +150,14 @@ public class RepositoryCommonServiceImpl implements RepositoryCommonService {
 				logger.info("there is no gateway annotation : " + repositoryName);
 				throw new PermissionException();
 			}
-			// 外部可访问的则做权限判断
-			/*
-			 * if (!Helper.hasPermission(repository, method, frameworkRealm,
-			 * Constants.DAO, logger)) { throw new
-			 * PermissionException("没有访问方法的权限"); }
-			 */
-			// 跟新post请求，数据为参数，保存数据直接在request body中
+			
+			// 更新post请求，数据为参数，保存数据直接在request body中
 			if (!type.equals(SAVE)) {
 				body = params;
 			}
 			
 			//Object obj = JSON.parseObject(body, entityClass);
-			//System.out.println("body:" + body);
-			//body = "{\"createDatetime\":\"2017-12-05 12:12:16\",\"createUser\":\"admin1\",\"deleteFlag\":\"0\",\"employeeId\":\"1\",\"orgDeptId\":\"1\",\"organizationId\":\"1\",\"updateUser\":\"王勇\",\"userId\":\"22\",\"userName\":\"王勇\",\"userNo\":\"demo\",\"userPd\":\"c4ca4238a0b923820dcc509a6f75849b\",\"userStatus\":\"1\",\"userType\":\"3\"}";
+			//body = "{\"createUser\":\"admin1\"}";
 			Object obj = JSON.parseObject(body, entityClass);
 			if (type.equals(PARTUPDATE)) {
 				// 反射找到Id的类型

@@ -36,7 +36,6 @@ import com.gofirst.framework.annotation.SessionAttribute;
 import com.gofirst.framework.exception.PermissionException;
 import com.gofirst.framework.session.FrameworkSession;
 import com.gofirst.framework.session.impl.FrameworkSessionImpl;
-//import com.google.gson.Gson;
 
 public class Helper {
 
@@ -44,7 +43,6 @@ public class Helper {
 
 	/**
 	 * json 串转化成对象数组
-	 * 
 	 * @param gson
 	 * @param array
 	 * @param method
@@ -418,7 +416,7 @@ public class Helper {
 			for (AuthorizationInfo authorization : cache.values()) {
 				permissions.addAll(authorization.getStringPermissions());
 			}
-			// ��cache�ŵ�session��
+			
 			session.setAttribute(Constants.SESSION_PERMISSION, permissions);
 			logger.info("session: " + cache.size());
 		} else {
@@ -455,7 +453,6 @@ public class Helper {
 
 	/**
 	 * 是否是 nosession
-	 * 
 	 * @param object
 	 * @param methodName
 	 * @return
@@ -497,7 +494,6 @@ public class Helper {
 
 	/**
 	 * 是否有 Pageable参数
-	 * 
 	 * @param method
 	 * @return
 	 */
@@ -514,7 +510,6 @@ public class Helper {
 
 	/**
 	 * 检查禁止的方法， 使用禁止注解 :@Forbid
-	 * 
 	 * @param joinPoint
 	 * @throws PermissionException
 	 */
