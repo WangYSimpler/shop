@@ -1,9 +1,11 @@
-///配置信息
-var respositoryName = 'TOrderRepository';
-var idName          = 'id';
-var tableName       = 'Order';
+	///配置信息
+	var respositoryName = 'TOrderRepository';
+	var idName          = 'id';
+	var tableName       = 'Order';
+	var initQueryFunction = 'findByDelFlag';
 
-function init() {
+
+	/*function init() {
 		remoteRetriver.resetSortFileds();
 		var sortParams = remoteRetriver.addSortFiled(idName,remoteRetriver.SORT_TYPE_ASC);
 		var params=[];
@@ -22,16 +24,25 @@ function init() {
 						alert('查询失败!!!' + errMsg);
 					}
 				});
-	};
+	};*/
+	
+	function init(){
+		hostCrud.hostInit(respositoryName,idName,initQueryFunction);
+	}
+	
 	
 	function showModelWindow() {
-		$('#dlg').dialog('open').dialog('setTitle', 'New' + tableName);
-		$('#fm').form('clear');
+		hostCrud.showModelWindow(tableName);
+		/*$('#dlg').dialog('open').dialog('setTitle', 'New' + tableName);
+		$('#fm').form('clear');*/
 	};
 
 	function closeModelWindow() {
-		$('#dlg').dialog('close'); // close the dialog
+		//$('#dlg').dialog('close'); // close the dialog
+		hostCrud.closeModelWindow();
 		init();
+		
+		//hostCrud.closeModelWindow();
 	}
 
 	function newObj() {
@@ -40,8 +51,10 @@ function init() {
 	};
 
 	function saveObj() {
-
 		var obj = $('#fm').serializeObject();
+		hostCrud.saveObj(obj);
+
+		/*var obj = $('#fm').serializeObject();
 		//进入保存文件
 		if(obj.id == ''){
 			obj.delFlag = '0';
@@ -49,11 +62,11 @@ function init() {
 		}else{
 			var tableId = obj.id;
 			rUpdate(obj,tableId);
-		}
+		}*/
 	};
 
 	//补充
-	function objComplete(obj,createFlag){
+	/*function objComplete(obj,createFlag){
 		var completeObj = obj;
 		if (createFlag) {
 			completeObj.delFlag='0';
@@ -64,11 +77,13 @@ function init() {
 			completeObj.updateDate = new Date().toLocaleDateString();
 		}
 		return completeObj;
-	}
+	}*/
 	
 	function rCreate(createObj) {
+		
+		hostCrud.rCreate(createObj);
 
-		var todo =  objComplete(createObj,true);
+		/*var todo =  hostCrud.objComplete(createObj,true);
 		remoteCreate.create(respositoryName, todo, true, function(errCode,errMsg, resultData) {
 			if (errCode == 0) {
 				alert("新建成功！");
@@ -77,15 +92,17 @@ function init() {
 			} else {
 				alert("新建失败！" + errMsg);
 			}
-		});
+		});*/
 	};
 
 	function editObj() {
 		var row = $('#dg').datagrid('getSelected');
-		if (row) {
+		
+		hostCrud.editObj(obj,tableName);
+		/*if (row) {
 			$('#dlg').dialog('open').dialog('setTitle', 'Edit ' + tableName);
 			$('#fm').form('load', row);
-		}
+		}*/
 	};
 
 	function rUpdate(updateObj, tableId) {
