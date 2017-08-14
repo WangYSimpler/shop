@@ -1,6 +1,3 @@
-/**
- * @Author JiangR 2017/4/18.
- */
 var baseRequest={
 
     sendGet: function (url, params, async, callback) {
