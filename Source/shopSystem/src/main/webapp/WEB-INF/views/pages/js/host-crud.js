@@ -31,9 +31,19 @@ var hostCrud={
 		},
 
 		
-		showModelWindow: function (tableName) {
-			$('#dlg').dialog('open').dialog('setTitle', 'New' + tableName);
-			$('#fm').form('clear');
+		showModelWindow: function (tableName,selectRowData) {
+			
+			var tableTitleName = '';
+			if(selectRowData ==  null){
+				tableTitleName = 'New ' + tableName;
+				selectRowData ='';
+				//$('#fm').form('clear');
+			}else{
+				tableTitleName  ='Edit ' + tableName;
+			}	
+			$('#dlg').dialog('open').dialog('setTitle', tableTitleName);
+			$('#fm').form('load', selectRowData);
+			
 		},
 
 		closeModelWindow :function () {
@@ -52,7 +62,7 @@ var hostCrud={
 				this.rCreate(obj);
 			}else{
 				var tableId = obj.id;
-				rUpdate(obj,tableId);
+				this.rUpdate(obj,tableId);
 			}
 		},
 
@@ -87,14 +97,15 @@ var hostCrud={
 		editObj:function (obj,tableName) {
 			var row = obj;
 			if (row) {
-				$('#dlg').dialog('open').dialog('setTitle', 'Edit ' + tableName);
-				$('#fm').form('load', row);
+				this.showModelWindow(tableName,row);
+				/*$('#dlg').dialog('open').dialog('setTitle', 'Edit ' + tableName);
+				$('#fm').form('load', row);*/
 			}
 		},
 
 		rUpdate: function (updateObj, tableId) {
 			var id = tableId;
-			var todo =  objComplete(updateObj,false);
+			var todo =  this.objComplete(updateObj,false);
 			remoteUpdate.update(respositoryName, id, todo, false, function(errCode, errMsg, resultData) {
 				if (errCode == 0) {
 					closeModelWindow();
@@ -104,9 +115,10 @@ var hostCrud={
 			});
 		},
 
-		removeObj: function () {
+		removeObj: function (row) {
 			///物理删除代码
-			var row = $('#dg').datagrid('getSelected');
+			//var row = $('#dg').datagrid('getSelected');
+			
 			if (row) {
 				 var msg = "您真的确定要删除吗？  \n请确认！"; 
 				  if (confirm(msg)==true){ 
