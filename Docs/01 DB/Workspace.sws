@@ -4,11 +4,7 @@
 
 <Workspace>
 	<Local Expanded="Yes">
-		<Model Expanded="Yes" ID="{9A2BA980-A0A6-497E-AAF8-853DEAC0C890}" Loaded="No" Name="shop" Type="{CDE44E21-9669-11D1-9914-006097355D9B}" URL="shop.pdm"/>
-		<Model Expanded="Yes" ID="{C1EA790B-BCE9-41B3-B504-67C96EB264E0}" Loaded="No" Name="pjap" Type="{CDE44E21-9669-11D1-9914-006097355D9B}" URL="/PJAP_Files/GoFirst.Pjap/DB/01 Pjap.Pdm/pjap.pdm"/>
-		<Model Expanded="Yes" ID="{52E33F9F-EC45-499E-997B-F91ADA1B4BBD}" Loaded="No" Name="TechRoom" Type="{CDE44E21-9669-11D1-9914-006097355D9B}" URL="/codes/TechRoomSystem/01 DB/TechRoom.pdm"/>
-		<Model Expanded="Yes" ID="{9A2BA980-A0A6-497E-AAF8-853DEAC0C890}" Loaded="No" Name="shop" Type="{CDE44E21-9669-11D1-9914-006097355D9B}" URL="shop.pdm"/>
-		<Model Expanded="Yes" ID="{C1EA790B-BCE9-41B3-B504-67C96EB264E0}" Name="pjap" Selected="Yes" Type="{CDE44E21-9669-11D1-9914-006097355D9B}" URL="/PJAP_Files/GoFirst.Pjap/DB/01 Pjap.Pdm/pjap.pdm"/>
+		<Model Expanded="Yes" ID="{88086B01-C9E1-11D4-9552-0090277716A9}" Name="技术室登记评定系统V1.0" Selected="Yes" Type="{CDE44E21-9669-11D1-9914-006097355D9B}" URL="/codes/TechRoom_Local/doc/01 DB/技术室登记评定系统V1.0.PDM"/>
 	</Local>
 	<BrowserModule Name="Repository"/>
 </Workspace>
