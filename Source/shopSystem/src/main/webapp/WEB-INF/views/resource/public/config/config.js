@@ -1,3 +1,4 @@
+//本地地址
 var gofirstConfig = {
     domain: 'http://localhost:9911',
     project: 'shopSystem',
