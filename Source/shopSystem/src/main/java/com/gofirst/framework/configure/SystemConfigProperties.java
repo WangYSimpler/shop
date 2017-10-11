@@ -8,6 +8,8 @@ import javax.inject.Named;
 
 import org.apache.log4j.Logger;
 
+import com.gofirst.framework.configure.impl.ConfigureProperties;
+
 /**
  * 读取frameworkConfig.properties配置文件
  * 

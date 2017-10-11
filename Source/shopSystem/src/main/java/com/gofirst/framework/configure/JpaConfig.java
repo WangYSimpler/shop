@@ -56,6 +56,7 @@ public class JpaConfig {
 		//vendorAdapter.setDatabase(Database.MYSQL);
 		
 		///获取配置文件中数据类型 20170427 WangY
+		///系统中配置的数据库
 		String hibernateDBSubject = sysConfig.getProperty(Constants.HIBERNATE_DB_SUBJECT);
 		vendorAdapter.setDatabase(Database.valueOf(hibernateDBSubject));
 		vendorAdapter.setGenerateDdl(true);

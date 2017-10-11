@@ -1,4 +1,4 @@
-package com.gofirst.framework.configure;
+package com.gofirst.framework.configure.impl;
 
 import static com.gofirst.framework.util.Constants.CONFIG_FILE;
 
@@ -9,10 +9,10 @@ import javax.inject.Named;
 
 import org.apache.log4j.Logger;
 
+import com.gofirst.framework.configure.Configuration;
+
 /**
  * 读取configure.properties配置文件
- * 
- * @author xy
  * 
  */
 @Named
